@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from './App'
-import HomePage from '@/pages/HomePage'
 import PlatformPage from '@/pages/PlatformPage'
 import LeadGenerationPage from '@/pages/LeadGenerationPage'
 import MarketingAutomationPage from '@/pages/MarketingAutomationPage'
