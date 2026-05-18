@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
     path: '/',
 element: <App />,
 children: [
-  { index: true, element: <HomePage /> },
+  { index: true, element: <HomePageV2Video /> },
   { path: 'platform', element: <PlatformPage /> },
   { path: 'platform/business-intelligence', element: <BusinessIntelligencePage /> },
   { path: 'platform/lead-generation', element: <LeadGenerationPage /> },
