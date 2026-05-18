@@ -271,7 +271,6 @@ export default function PlatformDiagram() {
         {/* Layers */}
         {layers.map((layer) => {
           const pos = DESKTOP_POS[layer.id]
-          const { cx, cy } = dc(layer.id)
           const isStub = layer.href === '/platform'
           const trackId = isStub
             ? `platform-layer-${layer.id}-stub`
