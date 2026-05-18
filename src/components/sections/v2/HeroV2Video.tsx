@@ -58,7 +58,7 @@ export default function HeroV2Video() {
         className="absolute inset-0 w-full h-full object-cover"
         style={{ background: 'linear-gradient(93deg, #22193B 22%, #E977C1 124%)' }}
       >
-        <source src="/assets/HomePageVid.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dyqu41ph3/video/upload/v1779077961/HomePageVid_w48srw.mp4" type="video/mp4" />
       </video>
 
       {/* Layer 2: Dark overlay — medium opacity to ensure text legibility */}
