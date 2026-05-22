@@ -470,9 +470,9 @@ export default function MarketingAutomationPage() {
               variants={resolvedFadeUp}
               className="font-sans text-[18px] leading-[1.6] text-ss-neutral-500 mb-12"
             >
-              Each pillar works independently. Together they form the connected system
-              that turns disconnected tactics into a unified customer journey — where every
-              piece makes the others stronger.
+              One system meets buyers wherever attention lives, works from behavioral
+              signals instead of broad guesses, and ties every touchpoint directly to
+              pipeline. Each pillar makes the others stronger.
             </motion.p>
 
             <motion.div variants={resolvedStagger} className="flex flex-wrap justify-center gap-3">
