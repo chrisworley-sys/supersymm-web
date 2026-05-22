@@ -49,14 +49,78 @@ export const financialAdvisorsConfig: VerticalConfig = {
         body: 'Volume isn\'t the goal — fit is. We tune the system to attract prospects who match your firm: the right asset level, the right life stage, the right planning need. The result is fewer wasted conversations and more first meetings that actually go somewhere.',
       },
     ],
+    stats: [
+      {
+        stat: '73%',
+        label: 'of investors research advisors online before ever contacting a firm',
+      },
+      {
+        stat: '5–7',
+        label: 'touchpoints on average before a prospect books a first call with an advisory firm',
+      },
+      {
+        stat: '67%',
+        label: 'of RIAs say referrals are their top growth source — but referrals still validate online before calling',
+      },
+      {
+        stat: '90 days',
+        label: 'is the typical window to convert an organic search visitor into a qualified prospect',
+      },
+    ],
+  },
+
+  personas: {
+    eyebrow: 'Who You\'re Marketing To',
+    h2: 'Prospects don\'t all find you the same way.',
+    h2AccentPhrase: 'same way.',
+    intro:
+      'Different prospects arrive with different intent, different timelines, and different trust thresholds. The channels and messages that work for each are not interchangeable.',
+    personas: [
+      {
+        type: 'The Accumulator',
+        intent: '"I need someone to help me manage what I\'ve built."',
+        description:
+          'A business owner, executive, or high earner who has grown wealth but lacks a structured plan. They\'re actively looking and will compare multiple firms before deciding. Strong credentials, clear positioning, and a defined process win here.',
+        channels: ['Paid Search', 'LinkedIn Ads', 'SEO Landing Pages', 'Advisor Bio Pages'],
+        keyInsight:
+          'They\'re comparing firms, not just you. Be the most credible, clearly positioned option in the search results — or you won\'t make the shortlist.',
+      },
+      {
+        type: 'The Transition Prospect',
+        intent: '"Something just changed and I need guidance."',
+        description:
+          'Triggered by a life event — a business sale, inheritance, divorce, retirement, or job change. Motivated and time-sensitive, but likely unfamiliar with how to find a fiduciary advisor. Whoever shows up first in their search with the right message wins.',
+        channels: ['Paid Search', 'Google Business Profile', 'Targeted Content', 'Fast-Response Nurture'],
+        keyInsight:
+          'Timing is everything. They\'re searching with high intent and a short window. Visibility and response speed matter more than brand polish.',
+      },
+      {
+        type: 'The Referred Prospect',
+        intent: '"Someone I trust said to call you."',
+        description:
+          'Arrives warm with strong intent but still validates online before booking. Your website, reviews, and LinkedIn presence are their confidence check. A weak digital presence can undo a trusted referral.',
+        channels: ['Practice Website', 'LinkedIn Profile', 'Google Reviews', 'Direct Email Nurture'],
+        keyInsight:
+          'Referrals close themselves — unless your online presence creates hesitation. The digital handshake has to hold up.',
+      },
+      {
+        type: 'The Long-Cycle Evaluator',
+        intent: '"I\'m not ready yet, but I\'m paying attention."',
+        description:
+          'Researching now, converting later. They follow advisors on LinkedIn, read newsletters, bookmark firm websites, and build a mental shortlist over months. Consistent, high-quality presence wins their eventual first call.',
+        channels: ['LinkedIn Organic', 'Email Newsletter', 'Educational Content', 'Retargeting'],
+        keyInsight:
+          'You can\'t rush this buyer — but you can stay present. The firm that shows up consistently in their feed is the one they call when the moment arrives.',
+      },
+    ],
   },
 
   capabilities: {
     eyebrow: 'The Platform, For Advisory Firms',
-    h2: 'Enabling advisors build dreams.',
+    h2: 'Enabling advisors to build dreams.',
     h2AccentPhrase: 'build dreams',
     intro:
-      'Five capabilities, working as one system — tuned to how advisory firms grow and the rules they operate under.',
+      'Six capabilities, working as one system — tuned to how advisory firms grow and the rules they operate under.',
     backgroundImages: [
       '/assets/illustrations/FA_images/pexels-alexmoliski-27612115.jpg',
       '/assets/illustrations/FA_images/pexels-anastasia-shuraeva-8796064.jpg',
@@ -88,6 +152,11 @@ export const financialAdvisorsConfig: VerticalConfig = {
         featureSubLabel: 'Compliance Built In',
         body: 'SEC Marketing Rule alignment, pre-publish approval workflows, testimonial and endorsement handling, and 5-year archiving — integrated with your existing review process, not bolted on after it.',
       },
+      {
+        benefitHeadline: 'Know every prospect before the first conversation starts',
+        featureSubLabel: 'Know Your Customer',
+        body: 'Every inbound prospect is profiled automatically — firmographic data, AUM signals, behavioral triggers, and engagement history. Your team walks into every first meeting with the context it takes most advisors months to build.',
+      },
     ],
   },
 
@@ -98,16 +167,16 @@ export const financialAdvisorsConfig: VerticalConfig = {
     intro:
       'You\'ve already invested in your stack. SuperSymm connects to it — your CRM, your compliance archiving, your existing marketing tools — so you\'re adding a system, not replacing one.',
     tools: [
-      { name: 'Wealthbox', logoUrl: 'https://logo.clearbit.com/wealthbox.com' },
-      { name: 'Redtail', logoUrl: 'https://logo.clearbit.com/redtailtechnology.com' },
+      { name: 'Wealthbox', logoUrl: '/assets/illustrations/company_Logos/Wealthbox-logo-1024x578.webp' },
+      { name: 'Redtail', logoUrl: '/assets/illustrations/company_Logos/redtail%20logo.png' },
       { name: 'Salesforce', logoUrl: 'https://logo.clearbit.com/salesforce.com' },
-      { name: 'HubSpot', logoUrl: 'https://logo.clearbit.com/hubspot.com' },
-      { name: 'FMG Suite', logoUrl: 'https://logo.clearbit.com/fmgsuite.com' },
-      { name: 'Snappy Kraken', logoUrl: 'https://logo.clearbit.com/snappykraken.com' },
-      { name: 'Calendly', logoUrl: 'https://logo.clearbit.com/calendly.com' },
-      { name: 'Orion', logoUrl: 'https://logo.clearbit.com/orionadvisor.com' },
+      { name: 'HubSpot', logoUrl: '/assets/illustrations/company_Logos/png-clipart-logo-hubspot-inc-marketing-asg-capital-group-pty-ltd-brand-marketing-text-orange-thumbnail.png' },
+      { name: 'FMG Suite', logoUrl: '/assets/illustrations/company_Logos/fmg_logo.png' },
+      { name: 'Snappy Kraken', logoUrl: '/assets/illustrations/company_Logos/snappy_kraken_logo.jpg' },
+      { name: 'Calendly', logoUrl: '/assets/illustrations/company_Logos/calendly_logo.png' },
+      { name: 'Orion', logoUrl: '/assets/illustrations/company_Logos/orion_logo.png' },
       { name: 'Black Diamond', logoUrl: 'https://logo.clearbit.com/bdreporting.com' },
-      { name: 'Mailchimp', logoUrl: 'https://logo.clearbit.com/mailchimp.com' },
+      { name: 'Mailchimp', logoUrl: '/assets/illustrations/company_Logos/Mailchimp-logo.png' },
     ],
     closingLine:
       "Don't see your tool? Most stacks integrate. We'll confirm yours on the first call.",

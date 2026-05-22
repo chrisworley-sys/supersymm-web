@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import {
   Crown, Users, RefreshCw, Zap, Network, Trophy,
-  Target, Layers, Settings, BarChart2, CheckCircle, ChevronRight,
+  Target, Layers, Settings, BarChart2, CheckCircle, ChevronRight, Sparkles,
 } from 'lucide-react'
 import type React from 'react'
 import PageWrapper from '@/components/common/PageWrapper'
@@ -14,9 +14,9 @@ import PillarSection from '@/components/sections/marketing-automation/PillarSect
 import UnifiedDataIllustration from '@/components/sections/marketing-automation/illustrations/UnifiedDataIllustration'
 import RealTimeResponseIllustration from '@/components/sections/marketing-automation/illustrations/RealTimeResponseIllustration'
 import JourneyOrchestrationIllustration from '@/components/sections/marketing-automation/illustrations/JourneyOrchestrationIllustration'
-import OmnichannelIllustration from '@/components/sections/marketing-automation/illustrations/OmnichannelIllustration'
-import ComplianceIllustration from '@/components/sections/marketing-automation/illustrations/ComplianceIllustration'
+import StayCompliantIllustration from '@/components/sections/marketing-automation/illustrations/StayCompliantIllustration'
 import ChallengeIllustration from '@/components/sections/marketing-automation/illustrations/ChallengeIllustration'
+import AssistiveAIIllustration from '@/components/sections/marketing-automation/illustrations/AssistiveAIIllustration'
 
 // Matches HomeV2 gradient text style
 const gradientText: React.CSSProperties = {
@@ -105,6 +105,7 @@ type CapabilityItem = {
   headline: string
   body: string
   gradient: string
+  Illustration?: React.ComponentType
 }
 
 const CAPABILITIES: CapabilityItem[] = [
@@ -138,6 +139,13 @@ const CAPABILITIES: CapabilityItem[] = [
     body: 'Reduce manual error and ensure every prospect receives the right message at the right time — consistently, on-brand, at a pace no team could match manually.',
     gradient: 'linear-gradient(135deg, #43336D, #8978BE)',
   },
+  {
+    Icon: Sparkles,
+    headline: 'Assistive AI',
+    body: 'Describe your goal, and AI drafts compliant, on-brand content for review — emails, social posts, nurture sequences — in seconds. You stay in control; the platform handles the heavy lifting.',
+    gradient: 'linear-gradient(135deg, #D5F77C, #6750A4)',
+    Illustration: AssistiveAIIllustration,
+  },
 ]
 
 const STATS = [
@@ -151,7 +159,6 @@ const PILLAR_TAGS = [
   { label: 'Unified Data', anchor: '#unified-data' },
   { label: 'Smart Triggers', anchor: '#smart-triggers' },
   { label: 'Journey Orchestration', anchor: '#journey' },
-  { label: 'Omnichannel', anchor: '#omnichannel' },
   { label: 'Compliance', anchor: '#compliance' },
 ]
 
@@ -328,8 +335,8 @@ export default function MarketingAutomationPage() {
               className="font-display font-black leading-[1.1] text-ss-neutral-700 mx-auto mb-5"
               style={{ fontSize: 'clamp(32px, 4vw, 48px)', maxWidth: '720px', textWrap: 'pretty' }}
             >
-              The principles that drive{' '}
-              <em className="font-serif italic not-italic" style={gradientText}>everything we do.</em>
+              Making Automation{' '}
+              <em className="font-serif italic not-italic" style={gradientText}>Core to Your Business</em>
             </motion.h2>
             <motion.p
               variants={resolvedFadeUp}
@@ -511,7 +518,7 @@ export default function MarketingAutomationPage() {
       <PillarSection
         id="unified-data"
         number="Unified Data"
-        title={"Know your customer.\nAll of them. Across every touchpoint."}
+        title={"Know your customer.\nAutomate your touchpoints."}
         body={[
           "Every interaction — email opens, page visits, ad clicks, form fills — unified into one continuously enriched customer profile. No fragmented data. No guessing at intent. You see the full picture of every prospect, and personas stop being slide-deck artifacts.",
         ]}
@@ -633,19 +640,6 @@ export default function MarketingAutomationPage() {
         illustration={<JourneyOrchestrationIllustration />}
       />
 
-      <PillarSection
-        id="omnichannel"
-        number="Omnichannel"
-        title={"Show up consistently,\nwherever they engage."}
-        body={[
-          "A customer doesn't think in channels. They start on LinkedIn, read your blog, open your email on their phone, then click a retargeting ad the next day. SuperSymm treats it as one conversation — one brand voice, one value proposition, across every channel.",
-        ]}
-        included={['LinkedIn, Meta, Instagram, X', 'Email and newsletter automation', 'Blog and content publishing', 'Paid media with attribution']}
-        insight="SuperSymm synchronizes audience data and content across every channel — so your message builds momentum instead of being repeated, ignored, or contradicted."
-        illustration={<OmnichannelIllustration />}
-        mirrored
-        grey
-      />
 
       <PillarSection
         id="compliance"
@@ -656,7 +650,7 @@ export default function MarketingAutomationPage() {
         ]}
         included={['SEC / FINRA archiving (5-year)', 'HIPAA-compliant communications', 'State bar advertising compliance', 'Pre-publish approval workflows', 'Audit-ready reporting']}
         insight="SuperSymm is built for RIAs, healthcare, and legal professionals — compliance is the default state, not a checklist someone runs after the fact."
-        illustration={<ComplianceIllustration />}
+        illustration={<StayCompliantIllustration />}
       />
 
       {/* ── Section 10: Blueprint (Near-black + dot texture) ── */}
@@ -840,8 +834,7 @@ export default function MarketingAutomationPage() {
               className="font-display font-black leading-[1.1] text-ss-neutral-700 mb-5"
               style={{ fontSize: 'clamp(32px, 4vw, 48px)' }}
             >
-              The Marketing Challenges{' '}
-              <em className="font-serif italic not-italic" style={gradientText}>We Solve</em>
+              <em className="font-serif italic not-italic" style={gradientText}>Automating Growth</em>
             </motion.h2>
             <motion.p
               variants={resolvedFadeUp}

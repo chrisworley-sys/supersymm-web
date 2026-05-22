@@ -2,6 +2,53 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+
+const personaIllustrations: { bg: string; svg: React.ReactNode }[] = [
+  {
+    bg: 'linear-gradient(135deg, #FFF0E0 0%, #FFD4A8 100%)',
+    svg: (
+      <svg viewBox="0 0 52 52" fill="none" style={{ width: '100%', height: '100%' }} aria-hidden="true">
+        {/* Body — neutral centered */}
+        <path d="M4 54 C4 37 48 37 48 54 Z" fill="#B84C0A" fillOpacity="0.55" />
+        {/* Head */}
+        <circle cx="26" cy="20" r="10" fill="#B84C0A" fillOpacity="0.82" />
+      </svg>
+    ),
+  },
+  {
+    bg: 'linear-gradient(135deg, #E0EEFF 0%, #BFDBFE 100%)',
+    svg: (
+      <svg viewBox="0 0 52 52" fill="none" style={{ width: '100%', height: '100%' }} aria-hidden="true">
+        {/* Body — slight forward lean */}
+        <path d="M5 54 C6 37 49 36 49 54 Z" fill="#1D52B8" fillOpacity="0.55" />
+        {/* Head — nudged slightly forward */}
+        <circle cx="27" cy="19" r="10" fill="#1D52B8" fillOpacity="0.82" />
+      </svg>
+    ),
+  },
+  {
+    bg: 'linear-gradient(135deg, #EDE9FE 0%, #D8B4FE 100%)',
+    svg: (
+      <svg viewBox="0 0 52 52" fill="none" style={{ width: '100%', height: '100%' }} aria-hidden="true">
+        {/* Body — wider open stance */}
+        <path d="M2 54 C3 36 49 36 50 54 Z" fill="#6D28D9" fillOpacity="0.55" />
+        {/* Head */}
+        <circle cx="26" cy="20" r="10" fill="#6D28D9" fillOpacity="0.82" />
+      </svg>
+    ),
+  },
+  {
+    bg: 'linear-gradient(135deg, #D8F5E8 0%, #A7F3D0 100%)',
+    svg: (
+      <svg viewBox="0 0 52 52" fill="none" style={{ width: '100%', height: '100%' }} aria-hidden="true">
+        {/* Body — upright, receptive */}
+        <path d="M5 54 C5 38 47 38 47 54 Z" fill="#065F46" fillOpacity="0.55" />
+        {/* Head — slightly elevated */}
+        <circle cx="26" cy="19" r="10" fill="#065F46" fillOpacity="0.82" />
+      </svg>
+    ),
+  },
+]
 import PageWrapper from '@/components/common/PageWrapper'
 import Breadcrumb from '@/components/common/Breadcrumb'
 import VerticalFAQ, { generateFAQSchema } from '@/components/vertical/VerticalFAQ'
@@ -441,6 +488,40 @@ export default function VerticalPage({ config }: VerticalPageProps) {
               </motion.li>
             ))}
           </motion.ol>
+
+          {config.methodology.stats && (
+            <motion.div
+              {...inView(staggerFast)}
+              className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mt-16"
+              style={{
+                borderTop: '1px solid rgba(103,80,164,0.15)',
+                paddingTop: '56px',
+              }}
+            >
+              {config.methodology.stats.map(({ stat, label }) => (
+                <motion.div key={stat} {...item} className="flex flex-col gap-3">
+                  <p
+                    className="font-display font-black leading-none"
+                    style={{
+                      fontSize: 'clamp(44px, 5.5vw, 64px)',
+                      background: 'linear-gradient(135deg, #6750A4, #B874CD)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    {stat}
+                  </p>
+                  <p
+                    className="font-sans text-ss-neutral-500"
+                    style={{ fontSize: '14px', lineHeight: 1.55 }}
+                  >
+                    {label}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
         </div>
       </section>
 
@@ -654,7 +735,152 @@ export default function VerticalPage({ config }: VerticalPageProps) {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 5 — INTEGRATIONS
+          SECTION 5 — AUDIENCE PERSONAS (optional)
+      ══════════════════════════════════════════════════════════ */}
+      {config.personas && (
+        <section
+          id="personas"
+          style={{
+            background: '#F5F3FB',
+            backgroundImage:
+              'linear-gradient(rgba(103,80,164,0.06) 1px, transparent 1px), linear-gradient(to right, rgba(103,80,164,0.06) 1px, transparent 1px)',
+            backgroundSize: '48px 48px',
+            paddingBlock: 'clamp(96px, 10vw, 140px)',
+          }}
+        >
+          <div className="mx-auto w-full max-w-[1200px] px-6">
+            <motion.div {...inView(stagger)} className="text-center mb-12">
+              <motion.div {...item}>
+                <SectionEyebrow>{config.personas.eyebrow}</SectionEyebrow>
+              </motion.div>
+              <motion.h2
+                {...item}
+                className="font-display font-black text-ss-neutral-700 mx-auto mb-5"
+                style={{
+                  fontSize: 'clamp(28px, 3.5vw, 44px)',
+                  lineHeight: 1.15,
+                  maxWidth: '760px',
+                  textWrap: 'pretty',
+                }}
+              >
+                {renderH2WithAccent(config.personas.h2, config.personas.h2AccentPhrase)}
+              </motion.h2>
+              <motion.p
+                {...item}
+                className="font-sans text-ss-neutral-500 mx-auto"
+                style={{ fontSize: '18px', lineHeight: 1.6, maxWidth: '680px' }}
+              >
+                {config.personas.intro}
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              {...inView(staggerFast)}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+            >
+              {config.personas.personas.map((persona) => (
+                <motion.div
+                  key={persona.type}
+                  {...item}
+                  style={{
+                    background: '#ffffff',
+                    borderRadius: '20px',
+                    padding: '32px 28px 28px',
+                    borderTop: '3px solid var(--ss-purple)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '16px',
+                    boxShadow: '0 2px 16px rgba(103,80,164,0.08)',
+                  }}
+                >
+                  <div className="flex items-center gap-4">
+                    {(() => {
+                      const idx = config.personas!.personas.indexOf(persona) % personaIllustrations.length
+                      const { bg, svg } = personaIllustrations[idx]
+                      return (
+                        <div
+                          style={{
+                            width: '52px',
+                            height: '52px',
+                            borderRadius: '50%',
+                            background: bg,
+                            overflow: 'hidden',
+                            flexShrink: 0,
+                          }}
+                        >
+                          {svg}
+                        </div>
+                      )
+                    })()}
+                    <div>
+                      <p
+                        className="font-sans font-semibold uppercase mb-1"
+                        style={{
+                          fontSize: '11px',
+                          letterSpacing: '0.10em',
+                          color: 'var(--ss-purple)',
+                        }}
+                      >
+                        {persona.type}
+                      </p>
+                      <p
+                        className="font-display font-bold text-ss-neutral-700"
+                        style={{ fontSize: 'clamp(17px, 2vw, 20px)', lineHeight: 1.25 }}
+                      >
+                        {persona.intent}
+                      </p>
+                    </div>
+                  </div>
+
+                  <p
+                    className="font-sans text-ss-neutral-500"
+                    style={{ fontSize: '15px', lineHeight: 1.65 }}
+                  >
+                    {persona.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {persona.channels.map((ch) => (
+                      <span
+                        key={ch}
+                        className="font-sans font-medium"
+                        style={{
+                          fontSize: '12px',
+                          padding: '4px 10px',
+                          borderRadius: '100px',
+                          background: 'rgba(103,80,164,0.08)',
+                          color: 'var(--ss-purple)',
+                          letterSpacing: '0.02em',
+                        }}
+                      >
+                        {ch}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div
+                    style={{
+                      borderLeft: '3px solid #8978BE',
+                      paddingLeft: '14px',
+                      marginTop: '4px',
+                    }}
+                  >
+                    <p
+                      className="font-sans"
+                      style={{ fontSize: '14px', lineHeight: 1.6, color: 'rgba(31,30,33,0.70)' }}
+                    >
+                      {persona.keyInsight}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 6 — INTEGRATIONS
       ══════════════════════════════════════════════════════════ */}
       <section
         id="integrations"
@@ -701,43 +927,28 @@ export default function VerticalPage({ config }: VerticalPageProps) {
                 {...item}
                 style={{
                   width: '140px',
-                  height: '72px',
-                  background: '#ffffff',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(31,30,33,0.10)',
+                  height: '64px',
                   display: 'flex',
-                  flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '6px',
-                  padding: '12px',
-                  boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
                   flexShrink: 0,
                 }}
               >
                 {tool.logoUrl ? (
-                  <>
-                    <img
-                      src={tool.logoUrl}
-                      alt={tool.name}
-                      style={{
-                        height: '28px',
-                        width: 'auto',
-                        maxWidth: '100px',
-                        objectFit: 'contain',
-                      }}
-                      loading="lazy"
-                      onError={(e) => {
-                        ;(e.currentTarget as HTMLImageElement).style.display = 'none'
-                      }}
-                    />
-                    <span
-                      className="font-sans font-medium"
-                      style={{ fontSize: '11px', color: 'rgba(31,30,33,0.50)', lineHeight: 1 }}
-                    >
-                      {tool.name}
-                    </span>
-                  </>
+                  <img
+                    src={tool.logoUrl}
+                    alt={tool.name}
+                    style={{
+                      width: '120px',
+                      height: '48px',
+                      objectFit: 'contain',
+                      mixBlendMode: 'multiply',
+                    }}
+                    loading="lazy"
+                    onError={(e) => {
+                      ;(e.currentTarget as HTMLImageElement).style.display = 'none'
+                    }}
+                  />
                 ) : (
                   <span
                     className="font-sans font-medium"

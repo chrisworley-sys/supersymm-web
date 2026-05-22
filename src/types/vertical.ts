@@ -27,12 +27,34 @@ export interface MethodologyBlock {
   body: string
 }
 
+export interface MethodologyStat {
+  stat: string
+  label: string
+}
+
 export interface VerticalMethodology {
   eyebrow: string
   h2: string
   h2AccentPhrase?: string
   intro: string
   blocks: [MethodologyBlock, MethodologyBlock, MethodologyBlock]
+  stats?: MethodologyStat[]
+}
+
+export interface AudiencePersona {
+  type: string
+  intent: string
+  description: string
+  channels: string[]
+  keyInsight: string
+}
+
+export interface VerticalPersonasSection {
+  eyebrow: string
+  h2: string
+  h2AccentPhrase?: string
+  intro: string
+  personas: AudiencePersona[]
 }
 
 export interface CapabilityBlock {
@@ -46,7 +68,7 @@ export interface VerticalCapabilities {
   h2: string
   h2AccentPhrase?: string
   intro: string
-  capabilities: [CapabilityBlock, CapabilityBlock, CapabilityBlock, CapabilityBlock, CapabilityBlock]
+  capabilities: CapabilityBlock[]
   engagementParagraph?: string
   backgroundImages?: string[]
 }
@@ -91,6 +113,7 @@ export interface VerticalConfig {
   insight: VerticalInsight
   methodology: VerticalMethodology
   capabilities: VerticalCapabilities
+  personas?: VerticalPersonasSection
   integrations: VerticalIntegrations
   faq: VerticalFAQSection
   cta: VerticalCTA

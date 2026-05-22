@@ -132,7 +132,7 @@ export default function HowWeWork() {
           {...inView}
         >
           <p className="font-sans text-[13px] uppercase tracking-[0.08em] font-medium text-ss-accent-100/70 mb-4">
-            How we work with you
+            AI Enabled Products
           </p>
           <h2 className="font-display font-black leading-[1.1] text-white mb-5" style={{ fontSize: 'clamp(32px, 4vw, 48px)' }}>
             Working as{' '}

@@ -1,6 +1,8 @@
 import { useRef, useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence, useInView, useReducedMotion, type Variants } from 'framer-motion'
-import { Users, Building2, AlertTriangle, Clock } from 'lucide-react'
+import { Users, Building2, AlertTriangle, Clock, ArrowRight } from 'lucide-react'
+import LogoLoopAnimation from '@/components/sections/business-intelligence/LogoLoopAnimation'
 
 const gradientText: React.CSSProperties = {
   background: 'linear-gradient(93deg, #8978BE, #E977C1)',
@@ -22,32 +24,43 @@ const visuals = [
     alt="Timed emails, social media posts, and SMS messages showing inconsistent outreach"
     style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '16px' }}
   />,
-  <img
+  <div
     key="3"
-    src="/assets/illustrations/problem-03-intelligence.gif?v=3"
-    alt="Venn diagram showing the Intelligence Layer connecting all marketing systems"
-    style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '16px' }}
-  />,
+    style={{
+      padding: '32px',
+      borderRadius: '16px',
+    }}
+  >
+    <div style={{ width: '100%', maxWidth: '420px', margin: '0 auto' }}>
+      <LogoLoopAnimation />
+    </div>
+  </div>,
 ]
 
 const pillars = [
   {
     eyebrow: '01 — Disconnected Execution',
-    h3Lines: ['Marketing runs in silos.', 'Transform to a connected platform.'],
+    h3Lines: ['Marketing running in silos', 'to a connected platform.'],
     problem: "Your SEO, email, and social all run in separate silos. Insights stay trapped inside each tool — and no one's connecting the dots.",
-    solution: "SuperSymm links every channel under one intelligence layer. What works in paid ads sharpens your content. Email sequences adapt from real behavior. Every part makes the others better.",
+    solution: "One intelligence layer connects every channel — so what works anywhere improves everything.",
+    link: '/platform',
+    linkLabel: 'Learn more about the Platform',
   },
   {
     eyebrow: '02 — Inconsistent Brand',
-    h3Lines: ['From inconsistent branding,', 'to one voice across every channel.'],
+    h3Lines: ['Inconsistent communications', 'to one voice across channels.'],
     problem: "Brand voice drifts by channel. Prospects see a different story on LinkedIn, your website, and in email. Every touchpoint feels like starting over.",
-    solution: "SuperSymm builds your messaging framework once and applies it everywhere — automatically, consistently, on every channel.",
+    solution: "One messaging framework, built once, applied consistently across every channel and campaign.",
+    link: '/platform/marketing-automation',
+    linkLabel: 'Learn about Marketing Automation',
   },
   {
     eyebrow: '03 — No Intelligence Layer',
-    h3Lines: ['Tactics and activity.', 'Intelligence driving every decision.'],
+    h3Lines: ['Random tactics and activity', 'to intelligence driven decisioning.'],
     problem: "Content gets created without real market insight. You're executing tactics without knowing whether they're the right ones.",
-    solution: "SuperSymm starts with a business intelligence engine — your market, your audience, your position — then builds strategy from there. Every tactic has a purpose. Every dollar goes further.",
+    solution: "Strategy built from real market intelligence — so every tactic has a purpose and every dollar goes further.",
+    link: '/platform/business-intelligence',
+    linkLabel: 'Learn about Business Intelligence',
   },
 ]
 
@@ -147,7 +160,7 @@ export default function ProblemSection() {
       >
         <div className="mx-auto w-full max-w-[1200px] px-6">
 
-          {/* Sticky scroll layout — text narrower, image wider */}
+          {/* Sticky scroll layout */}
           <div
             className="grid grid-cols-1 lg:grid-cols-[2fr_3fr]"
             style={{ gap: '56px', paddingTop: '60px', paddingBottom: '40px' }}
@@ -207,9 +220,15 @@ export default function ProblemSection() {
                     <p className="font-sans text-[11px] uppercase tracking-[0.10em] font-bold text-ss-purple-500 mb-2">
                       SuperSymm
                     </p>
-                    <p className="font-sans text-[15px] leading-[1.65] text-ss-neutral-600">
+                    <p className="font-sans text-[15px] leading-[1.65] text-ss-neutral-600 mb-3">
                       {pillar.solution}
                     </p>
+                    <Link
+                      to={pillar.link}
+                      className="inline-flex items-center gap-1.5 font-sans text-[13px] font-medium text-ss-purple-500 hover:text-ss-purple-600 transition-colors"
+                    >
+                      {pillar.linkLabel} <ArrowRight className="size-3.5" />
+                    </Link>
                   </div>
                 </div>
               ))}

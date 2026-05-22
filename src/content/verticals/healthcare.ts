@@ -49,6 +49,24 @@ export const healthcareConfig: VerticalConfig = {
         body: 'The goal isn\'t maximum inquiries — it\'s the right patients for the care you provide. We tune the system to attract patients who match your specialties, your location, and the conditions you\'re built to treat. Better fit means better outcomes and a healthier practice.',
       },
     ],
+    stats: [
+      {
+        stat: '72%',
+        label: 'of patients search online before choosing a provider — often before asking anyone they know',
+      },
+      {
+        stat: '78%',
+        label: 'of appointments go to the first practice that responds to a patient inquiry',
+      },
+      {
+        stat: '40%',
+        label: 'of new patients at most practices still arrive through referral — but referrals still validate online before calling',
+      },
+      {
+        stat: '84%',
+        label: 'of patients trust online reviews as much as a personal recommendation when choosing a provider',
+      },
+    ],
   },
 
   capabilities: {
@@ -56,7 +74,12 @@ export const healthcareConfig: VerticalConfig = {
     h2: 'Marketing built for practices.',
     h2AccentPhrase: 'built for practices',
     intro:
-      'Five capabilities, working as one system — tuned to how practices grow and the privacy rules they operate under.',
+      'Six capabilities, working as one system — tuned to how practices grow and the privacy rules they operate under.',
+    backgroundImages: [
+      '/assets/illustrations/HC_images/02242833-4-3.avif',
+      '/assets/illustrations/HC_images/healthcare-in-the-netherlands-international-student.jpg',
+      '/assets/illustrations/HC_images/page-property-provider-2.avif',
+    ],
     capabilities: [
       {
         benefitHeadline: 'Marketing that runs without taking you from patients',
@@ -83,9 +106,58 @@ export const healthcareConfig: VerticalConfig = {
         featureSubLabel: 'Compliance Built In',
         body: 'HIPAA-aware communication handling, consent tracking, and privacy-safe workflows — built into the system, not added after. Protected health information stays protected by default.',
       },
+      {
+        benefitHeadline: "Know who's inquiring before intake ever begins",
+        featureSubLabel: 'Know Your Patient',
+        body: 'Every patient inquiry arrives with behavioral and contextual signals — what they searched, how they found you, and what care they\'re likely seeking. Intake starts with the full picture, routing happens faster, and the first interaction is better for everyone.',
+      },
     ],
-    engagementParagraph:
-      'This isn\'t DIY software. We learn your practice, build the strategy, and launch the system. Then we meet with you regularly to review what\'s working and adjust — while the platform runs the day-to-day and privacy-safe workflows stay in place. You stay focused on care. We handle the rest.',
+  },
+
+  personas: {
+    eyebrow: 'Who You\'re Marketing To',
+    h2: 'Patients don\'t all find you the same way.',
+    h2AccentPhrase: 'same way.',
+    intro:
+      'Different patients arrive with different intent, different timelines, and different trust thresholds. The channels and messages that work for each are not interchangeable.',
+    personas: [
+      {
+        type: 'Urgent Seeker',
+        intent: '"I need help now."',
+        description:
+          'Triggered by immediate symptoms, a new diagnosis, or an acute need. Not comparing practices — looking for availability. Whoever appears first and responds fastest wins the appointment.',
+        channels: ['Paid Search', 'Google Business Profile', 'Fast-Response Booking'],
+        keyInsight:
+          'Speed of response is the differentiator. A 5-minute window beats a polished website every time.',
+      },
+      {
+        type: 'The Researcher',
+        intent: '"Help me understand my options."',
+        description:
+          'Takes days or weeks to evaluate. Reads practice websites, compares credentials, and looks for educational content that explains their condition, their options, and what makes one provider better than another.',
+        channels: ['Organic Search', 'Educational Content', 'Review Platforms', 'Physician Bio Pages'],
+        keyInsight:
+          'Authority wins trust here. Be the most informative, credible source in your specialty — not just a contact page.',
+      },
+      {
+        type: 'Second-Opinion Seeker',
+        intent: '"I want to make sure I\'m getting the right care."',
+        description:
+          'Already in treatment elsewhere and has doubts. Specifically looking for specialty credentials, differentiated expertise, and evidence of outcomes. Highly motivated once convinced.',
+        channels: ['Specialty Landing Pages', 'Outcomes Content', 'Credential Signals'],
+        keyInsight:
+          'Your differentiation has to be specific and visible — "compassionate care" isn\'t enough for someone who\'s already seen one provider.',
+      },
+      {
+        type: 'Referred Patient',
+        intent: '"Someone I trust sent me here."',
+        description:
+          'Arrives warm with strong intent. But even referred patients validate online before calling. Your digital presence is their confirmation — if it creates doubt, the referral still falls through.',
+        channels: ['Google Business Profile', 'Practice Website', 'Review Volume & Recency'],
+        keyInsight:
+          'Referrals close themselves — unless your online presence creates hesitation. Don\'t let a weak profile undo a warm introduction.',
+      },
+    ],
   },
 
   integrations: {
@@ -95,15 +167,14 @@ export const healthcareConfig: VerticalConfig = {
     intro:
       'You\'ve already invested in your systems. SuperSymm connects to them — your scheduling, your CRM, your existing marketing and review tools — so you\'re adding a system, not replacing one.',
     tools: [
-      { name: 'HubSpot', logoUrl: 'https://logo.clearbit.com/hubspot.com' },
+      { name: 'HubSpot', logoUrl: '/assets/illustrations/company_Logos/png-clipart-logo-hubspot-inc-marketing-asg-capital-group-pty-ltd-brand-marketing-text-orange-thumbnail.png' },
       { name: 'Salesforce', logoUrl: 'https://logo.clearbit.com/salesforce.com' },
-      { name: 'Calendly', logoUrl: 'https://logo.clearbit.com/calendly.com' },
+      { name: 'Calendly', logoUrl: '/assets/illustrations/company_Logos/calendly_logo.png' },
       { name: 'Podium', logoUrl: 'https://logo.clearbit.com/podium.com' },
       { name: 'Birdeye', logoUrl: 'https://logo.clearbit.com/birdeye.com' },
       { name: 'Google Business', logoUrl: 'https://logo.clearbit.com/google.com' },
-      { name: 'Mailchimp', logoUrl: 'https://logo.clearbit.com/mailchimp.com' },
-      { name: 'Zocdoc', logoUrl: 'https://logo.clearbit.com/zocdoc.com' },
-      { name: 'Practice Scheduling', logoUrl: undefined },
+      { name: 'Mailchimp', logoUrl: '/assets/illustrations/company_Logos/Mailchimp-logo.png' },
+      { name: 'Zocdoc', logoUrl: '/assets/illustrations/company_Logos/zocdoc_logo.png' },
     ],
     closingLine:
       "Don't see your tool? Most systems integrate. We'll confirm yours on the first call.",
