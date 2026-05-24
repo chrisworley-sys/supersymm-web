@@ -234,9 +234,9 @@ export default function PlatformPage() {
             >
               Customer expectations are shifting.{' '}
               <em className="font-serif italic not-italic" style={gradientText}>
-                It's not about different platforms —
+                It's about building an intelligent platform
               </em>
-              {' '}it's systems and intelligence that drive behavior.
+              {' '}that responds and drives outcomes.
             </motion.h2>
           </motion.div>
         </div>
@@ -268,7 +268,7 @@ export default function PlatformPage() {
                 className="font-sans font-medium uppercase text-ss-purple-500 mb-5"
                 style={{ fontSize: '13px', letterSpacing: '0.08em' }}
               >
-                Our Goal
+                Context Matters
               </motion.p>
 
               <motion.h2
@@ -276,8 +276,8 @@ export default function PlatformPage() {
                 className="font-display font-bold text-ss-neutral-700 mb-6"
                 style={{ fontSize: 'clamp(28px, 3.2vw, 40px)', lineHeight: 1.2, textWrap: 'pretty' }}
               >
-                Make great marketing feel{' '}
-                <em className="font-serif italic not-italic" style={gradientText}>effortless.</em>
+                Context{' '}
+                <em className="font-serif italic not-italic" style={gradientText}>drives the platform.</em>
               </motion.h2>
 
               <motion.p
@@ -285,9 +285,10 @@ export default function PlatformPage() {
                 className="font-sans text-ss-neutral-600 mb-8"
                 style={{ fontSize: '18px', lineHeight: 1.6 }}
               >
-                We built SuperSymm by asking one question: what if your marketing could run as
-                intelligently as the best teams — automatically, and within the compliance
-                boundaries your firm requires?
+                Context is the core of everything SuperSymm does. Every decision the platform
+                makes — what content to create, which leads to prioritize, when to engage —
+                is grounded in a deep understanding of your business, your audience, and the
+                signals they send. That context is what turns automation into intelligence.
               </motion.p>
 
               {/* CTA row — replaces "Here's how it's built." */}

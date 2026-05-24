@@ -107,11 +107,17 @@ export interface VerticalCTA {
   pricingLine: string
 }
 
+export interface StatBlock {
+  value: string
+  label: string
+}
+
 export interface VerticalConfig {
   seo: VerticalSEO
   hero: VerticalHero
   insight: VerticalInsight
   methodology: VerticalMethodology
+  statsSection?: StatBlock[]
   capabilities: VerticalCapabilities
   personas?: VerticalPersonasSection
   integrations: VerticalIntegrations

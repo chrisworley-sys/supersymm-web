@@ -6,6 +6,9 @@ import MarketingAutomationPage from '@/pages/MarketingAutomationPage'
 import SolutionsPage from '@/pages/SolutionsPage'
 import FinancialAdvisorsPage from '@/pages/FinancialAdvisorsPage'
 import HealthcarePage from '@/pages/HealthcarePage'
+import LegalPage from '@/pages/LegalPage'
+import TaxAccountingPage from '@/pages/TaxAccountingPage'
+import B2BServicesPage from '@/pages/B2BServicesPage'
 import PricingPage from '@/pages/PricingPage'
 import AboutPage from '@/pages/AboutPage'
 import PrivacyPage from '@/pages/PrivacyPage'
@@ -34,6 +37,9 @@ children: [
   { path: 'solutions', element: <SolutionsPage /> },
   { path: 'solutions/financial-advisors', element: <FinancialAdvisorsPage /> },
   { path: 'solutions/healthcare', element: <HealthcarePage /> },
+  { path: 'solutions/legal', element: <LegalPage /> },
+  { path: 'solutions/tax-and-accounting', element: <TaxAccountingPage /> },
+  { path: 'solutions/b2b-services', element: <B2BServicesPage /> },
   { path: 'pricing', element: <PricingPage /> },
   { path: 'about', element: <AboutPage /> },
   { path: 'privacy', element: <PrivacyPage /> },

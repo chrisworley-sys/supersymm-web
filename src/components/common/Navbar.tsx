@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { DropdownMenu } from 'radix-ui'
 import {
@@ -73,43 +73,62 @@ const solutionsItems: NavDropdownItem[] = [
   },
   {
     label: 'Tax & Accounting',
-    href: '/solutions/tax-accounting',
+    href: '/solutions/tax-and-accounting',
     description: 'Year-round client acquisition for CPA firms',
     Icon: Calculator,
-    comingSoon: true,
   },
   {
     label: 'Legal Professionals',
     href: '/solutions/legal',
-    description: 'State bar compliant marketing for law firms',
+    description: 'State bar rule-aware marketing for law firms',
     Icon: Scale,
-    comingSoon: true,
   },
   {
     label: 'B2B Services',
-    href: '/solutions/b2b',
-    description: 'Automated pipeline for professional service companies',
+    href: '/solutions/b2b-services',
+    description: 'Account-based pipeline for consulting and services firms',
     Icon: Briefcase,
-    comingSoon: true,
   },
 ]
 
 function DropdownItemActive({ item }: { item: NavDropdownItem }) {
   const { Icon, label, description, href } = item
+  const location = useLocation()
+  const isActive = location.pathname === href || location.pathname.startsWith(href + '/')
+
   return (
     <DropdownMenu.Item asChild>
       <Link
         to={href}
-        className="nav-shimmer group flex items-start gap-3 rounded-xl p-3.5 outline-none hover:bg-white/[0.07] focus-visible:bg-white/[0.07] active:bg-white/[0.12] transition-colors duration-150 cursor-pointer"
+        className={cn(
+          'nav-shimmer group flex items-start gap-3 rounded-xl p-3.5 outline-none transition-colors duration-150 cursor-pointer',
+          isActive
+            ? 'bg-white/[0.10]'
+            : 'hover:bg-white/[0.07] focus-visible:bg-white/[0.07] active:bg-white/[0.12]'
+        )}
       >
-        <div className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-white/[0.06] group-hover:bg-ss-accent-100/[0.18] transition-colors duration-150">
-          <Icon className="h-4 w-4 text-white/55 group-hover:text-ss-accent-100 transition-colors duration-150" />
+        <div className={cn(
+          'mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg transition-colors duration-150',
+          isActive
+            ? 'bg-ss-accent-100/[0.20]'
+            : 'bg-white/[0.06] group-hover:bg-ss-accent-100/[0.18]'
+        )}>
+          <Icon className={cn(
+            'h-4 w-4 transition-colors duration-150',
+            isActive ? 'text-ss-accent-100' : 'text-white/55 group-hover:text-ss-accent-100'
+          )} />
         </div>
         <div className="min-w-0">
-          <p className="font-sans font-semibold text-body-sm text-white/85 group-hover:text-white transition-colors duration-150 leading-snug">
+          <p className={cn(
+            'font-sans font-semibold text-body-sm leading-snug transition-colors duration-150',
+            isActive ? 'text-white' : 'text-white/85 group-hover:text-white'
+          )}>
             {label}
           </p>
-          <p className="font-sans text-body-xs text-white/40 group-hover:text-white/60 mt-0.5 transition-colors duration-150 leading-snug">
+          <p className={cn(
+            'font-sans text-body-xs mt-0.5 leading-snug transition-colors duration-150',
+            isActive ? 'text-white/60' : 'text-white/40 group-hover:text-white/60'
+          )}>
             {description}
           </p>
         </div>
@@ -147,12 +166,44 @@ function NavDropdown({
   items: NavDropdownItem[]
   dropdownWidth?: number
 }) {
+  const [open, setOpen] = useState(false)
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const location = useLocation()
+
+  const isActive = items.some(
+    item => location.pathname === item.href || location.pathname.startsWith(item.href + '/')
+  )
+
+  useEffect(() => () => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current)
+  }, [])
+
+  const scheduleClose = () => {
+    closeTimerRef.current = setTimeout(() => setOpen(false), 120)
+  }
+
+  const cancelClose = () => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current)
+  }
+
   return (
-    <DropdownMenu.Root modal={false}>
+    <DropdownMenu.Root open={open} onOpenChange={setOpen} modal={false}>
       <DropdownMenu.Trigger asChild>
-        <button className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-white/75 hover:text-white hover:bg-white/[0.08] font-sans text-body-sm font-medium transition-all duration-150 outline-none data-[state=open]:text-white data-[state=open]:bg-white/[0.10] select-none whitespace-nowrap">
+        <button
+          className={cn(
+            'flex items-center gap-1.5 rounded-lg px-3 py-2 font-sans text-body-sm font-medium transition-all duration-150 outline-none select-none whitespace-nowrap',
+            isActive || open
+              ? 'text-white bg-white/[0.10]'
+              : 'text-white/75 hover:text-white hover:bg-white/[0.08]'
+          )}
+          onMouseEnter={() => { cancelClose(); setOpen(true) }}
+          onMouseLeave={scheduleClose}
+        >
           {label}
-          <ChevronDown className="size-3.5 text-white/45 transition-transform duration-200 [[data-state=open]_&]:rotate-180 [[data-state=open]_&]:text-white/70" />
+          <ChevronDown className={cn(
+            'size-3.5 transition-transform duration-200',
+            open ? 'rotate-180 text-white/70' : isActive ? 'text-white/70' : 'text-white/45'
+          )} />
         </button>
       </DropdownMenu.Trigger>
 
@@ -161,6 +212,8 @@ function NavDropdown({
           sideOffset={14}
           align="start"
           collisionPadding={16}
+          onMouseEnter={cancelClose}
+          onMouseLeave={scheduleClose}
           className="z-50 rounded-2xl border border-white/[0.09] shadow-[0_24px_64px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.04)] p-2 animate-fade-in"
           style={{
             width: `${dropdownWidth}px`,
@@ -244,13 +297,23 @@ export default function Navbar() {
             <NavDropdown label="Solutions" items={solutionsItems} dropdownWidth={560} />
             <Link
               to="/pricing"
-              className="rounded-lg px-3 py-2 text-white/75 hover:text-white hover:bg-white/[0.08] font-sans text-body-sm font-medium transition-all duration-150 whitespace-nowrap"
+              className={cn(
+                'rounded-lg px-3 py-2 font-sans text-body-sm font-medium transition-all duration-150 whitespace-nowrap',
+                location.pathname === '/pricing'
+                  ? 'text-white bg-white/[0.10]'
+                  : 'text-white/75 hover:text-white hover:bg-white/[0.08]'
+              )}
             >
               Pricing
             </Link>
             <Link
               to="/about"
-              className="rounded-lg px-3 py-2 text-white/75 hover:text-white hover:bg-white/[0.08] font-sans text-body-sm font-medium transition-all duration-150 whitespace-nowrap"
+              className={cn(
+                'rounded-lg px-3 py-2 font-sans text-body-sm font-medium transition-all duration-150 whitespace-nowrap',
+                location.pathname === '/about'
+                  ? 'text-white bg-white/[0.10]'
+                  : 'text-white/75 hover:text-white hover:bg-white/[0.08]'
+              )}
             >
               About
             </Link>
@@ -322,7 +385,12 @@ export default function Navbar() {
                   key={item.label}
                   to={item.href}
                   onClick={() => setIsMobileOpen(false)}
-                  className="flex items-center gap-3 rounded-lg px-2 py-3 font-sans text-body-sm text-white/80 hover:text-white hover:bg-white/[0.08] transition-colors"
+                  className={cn(
+                    'flex items-center gap-3 rounded-lg px-2 py-3 font-sans text-body-sm transition-colors',
+                    location.pathname === item.href || location.pathname.startsWith(item.href + '/')
+                      ? 'text-white bg-white/[0.10]'
+                      : 'text-white/80 hover:text-white hover:bg-white/[0.08]'
+                  )}
                 >
                   <item.Icon className="h-4 w-4 text-white/40 flex-shrink-0" />
                   {item.label}
@@ -348,7 +416,12 @@ export default function Navbar() {
                     key={item.label}
                     to={item.href}
                     onClick={() => setIsMobileOpen(false)}
-                    className="flex items-center gap-3 rounded-lg px-2 py-3 font-sans text-body-sm text-white/80 hover:text-white hover:bg-white/[0.08] transition-colors"
+                    className={cn(
+                      'flex items-center gap-3 rounded-lg px-2 py-3 font-sans text-body-sm transition-colors',
+                      location.pathname === item.href || location.pathname.startsWith(item.href + '/')
+                        ? 'text-white bg-white/[0.10]'
+                        : 'text-white/80 hover:text-white hover:bg-white/[0.08]'
+                    )}
                   >
                     <item.Icon className="h-4 w-4 text-white/40 flex-shrink-0" />
                     {item.label}
@@ -361,20 +434,24 @@ export default function Navbar() {
               <p className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-2 px-2">
                 Company
               </p>
-              <Link
-                to="/pricing"
-                onClick={() => setIsMobileOpen(false)}
-                className="block rounded-lg px-2 py-3 font-sans text-body-sm text-white/80 hover:text-white hover:bg-white/[0.08] transition-colors"
-              >
-                Pricing
-              </Link>
-              <Link
-                to="/about"
-                onClick={() => setIsMobileOpen(false)}
-                className="block rounded-lg px-2 py-3 font-sans text-body-sm text-white/80 hover:text-white hover:bg-white/[0.08] transition-colors"
-              >
-                About
-              </Link>
+              {[
+                { label: 'Pricing', href: '/pricing' },
+                { label: 'About', href: '/about' },
+              ].map(({ label, href }) => (
+                <Link
+                  key={href}
+                  to={href}
+                  onClick={() => setIsMobileOpen(false)}
+                  className={cn(
+                    'block rounded-lg px-2 py-3 font-sans text-body-sm transition-colors',
+                    location.pathname === href
+                      ? 'text-white bg-white/[0.10]'
+                      : 'text-white/80 hover:text-white hover:bg-white/[0.08]'
+                  )}
+                >
+                  {label}
+                </Link>
+              ))}
             </div>
           </nav>
 

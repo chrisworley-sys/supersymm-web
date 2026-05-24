@@ -16,13 +16,19 @@ const companyLinks = [
   { label: 'Pricing', href: '/pricing' },
 ]
 
+const legalLinks = [
+  { label: 'Privacy Policy', href: '/privacy' },
+  { label: 'Terms of Service', href: '/terms' },
+  { label: 'Compliance Hub', href: '/platform/compliance' },
+]
+
 export default function Footer() {
   return (
     <footer className="bg-ss-purple-700 border-t border-white/10">
       <div className="ss-container py-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-5">
               <img
                 src="/assets/logos/logo-horizontal.png"
@@ -74,6 +80,23 @@ export default function Footer() {
             <h3 className="text-white font-sans text-body-sm font-semibold mb-5">Company</h3>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className="text-white/60 hover:text-white font-sans text-body-sm transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h3 className="text-white font-sans text-body-sm font-semibold mb-5">Legal</h3>
+            <ul className="space-y-3">
+              {legalLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}

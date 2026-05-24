@@ -52,7 +52,7 @@ const personaIllustrations: { bg: string; svg: React.ReactNode }[] = [
 import PageWrapper from '@/components/common/PageWrapper'
 import Breadcrumb from '@/components/common/Breadcrumb'
 import VerticalFAQ, { generateFAQSchema } from '@/components/vertical/VerticalFAQ'
-import type { VerticalConfig } from '@/types/vertical'
+import type { VerticalConfig, StatBlock } from '@/types/vertical'
 
 const MotionLink = motion.create(Link)
 
@@ -524,6 +524,56 @@ export default function VerticalPage({ config }: VerticalPageProps) {
           )}
         </div>
       </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 3b — STATS (optional standalone dark section)
+          Rendered when statsSection is present in config.
+          Separate from methodology.stats (which renders inline).
+      ══════════════════════════════════════════════════════════ */}
+      {config.statsSection && (
+        <section
+          id="stats"
+          aria-label={`Key statistics for ${config.seo.audienceType}`}
+          style={{
+            background: '#22193B',
+            paddingBlock: 'clamp(80px, 9vw, 120px)',
+          }}
+        >
+          <div className="mx-auto w-full max-w-[1200px] px-6">
+            <motion.ul
+              {...inView(staggerFast)}
+              className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
+              style={{ listStyle: 'none', padding: 0, margin: 0 }}
+            >
+              {(config.statsSection as StatBlock[]).map(({ value, label }) => (
+                <motion.li
+                  key={value + label}
+                  {...item}
+                  className="flex flex-col gap-3"
+                >
+                  <p
+                    className="font-display font-black leading-none"
+                    style={{ fontSize: 'clamp(44px, 5.5vw, 64px)', color: '#D5F77C' }}
+                  >
+                    {value}
+                  </p>
+                  <p
+                    className="font-sans"
+                    style={{
+                      fontSize: '14px',
+                      lineHeight: 1.55,
+                      color: 'rgba(255,255,255,0.65)',
+                      maxWidth: '200px',
+                    }}
+                  >
+                    {label}
+                  </p>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </div>
+        </section>
+      )}
 
       {/* ═══════════════════════════════════════════════════════════
           SECTION 4 — CAPABILITIES
