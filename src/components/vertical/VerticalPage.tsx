@@ -234,6 +234,7 @@ export default function VerticalPage({ config }: VerticalPageProps) {
             className="pointer-events-none absolute inset-0"
             style={{
               background:
+                config.hero.heroOverlay ??
                 'linear-gradient(93deg, rgba(22,14,40,0.95) 0%, rgba(34,25,59,0.90) 45%, rgba(120,35,90,0.82) 100%)',
             }}
           />
@@ -479,12 +480,23 @@ export default function VerticalPage({ config }: VerticalPageProps) {
                 >
                   {block.headline}
                 </h3>
-                <p
-                  className="font-sans text-ss-neutral-500"
-                  style={{ fontSize: '16px', lineHeight: 1.65, margin: 0 }}
-                >
-                  {block.body}
-                </p>
+                {block.bodyBullets ? (
+                  <ul
+                    className="font-sans text-ss-neutral-500"
+                    style={{ fontSize: '15px', lineHeight: 1.6, margin: 0, paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '6px' }}
+                  >
+                    {block.bodyBullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p
+                    className="font-sans text-ss-neutral-500"
+                    style={{ fontSize: '16px', lineHeight: 1.65, margin: 0 }}
+                  >
+                    {block.body}
+                  </p>
+                )}
               </motion.li>
             ))}
           </motion.ol>
@@ -541,7 +553,10 @@ export default function VerticalPage({ config }: VerticalPageProps) {
         >
           <div className="mx-auto w-full max-w-[1200px] px-6">
             <motion.ul
-              {...inView(staggerFast)}
+              variants={prefersReduced ? undefined : staggerFast}
+              initial={prefersReduced ? false : 'hidden'}
+              whileInView={prefersReduced ? undefined : 'visible'}
+              viewport={{ once: true, amount: 0 }}
               className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
               style={{ listStyle: 'none', padding: 0, margin: 0 }}
             >

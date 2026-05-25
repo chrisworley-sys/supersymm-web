@@ -21,7 +21,10 @@ export const legalConfig: VerticalConfig = {
     h1AccentPhrase: 'Not to market.',
     framingParagraph:
       'SuperSymm helps law firms turn legal expertise into a steady client pipeline. We build the digital framework and performance marketing that increases visibility, captures qualified demand, and grows your firm — with state bar advertising rules built into every step.',
-    // heroImage intentionally omitted — dot-grid background renders automatically
+    heroImage: '/assets/illustrations/lawyer_hero.jpg',
+    // Pinker overlay — more pink/magenta than the FA default
+    heroOverlay:
+      'linear-gradient(93deg, rgba(22,10,35,0.94) 0%, rgba(80,20,70,0.90) 45%, rgba(160,40,110,0.80) 100%)',
   },
 
   insight: {
@@ -35,22 +38,38 @@ export const legalConfig: VerticalConfig = {
     h2: 'Built around how law firms actually grow.',
     h2AccentPhrase: 'actually grow',
     intro:
-      'Three things shape every program we run for a law firm. They\'re the three things that actually determine whether marketing works in a regulated, referral-driven, reputation-built practice.',
+      'Three problems keep law firms from growing predictably. Here\'s how we solve each one.',
     blocks: [
       {
         number: '01',
-        headline: 'State bar advertising rules are the first question, not the last.',
-        body: 'State bar advertising rules vary by jurisdiction and impose specific restrictions on solicitation, testimonials, comparative claims, fee references, and outcome statements. SuperSymm integrates with your existing review process and builds these guardrails into the workflow itself: jurisdiction-aware language flagging, required disclaimers automatically inserted, pre-publish review, and full archive records. Nothing goes out until it\'s cleared.',
+        headline: 'You can\'t market freely — and most tools don\'t know that.',
+        body: '',
+        // Note: "state bar advertising rule aware" — not "state bar compliant"
+        bodyBullets: [
+          'State bar advertising rules vary by jurisdiction and restrict solicitation, testimonials, and outcome claims',
+          'Generic marketing tools have no concept of bar rule guardrails',
+          'SuperSymm builds jurisdiction-aware flagging, required disclaimers, and pre-publish review into the workflow — nothing goes out until it\'s cleared',
+        ],
       },
       {
         number: '02',
-        headline: 'Legal clients arrive at different speeds — and from different doors.',
-        body: 'A criminal defense client decides in hours. A complex commercial litigation matter unfolds over months. An estate planning prospect researches quietly for years before reaching out. We build presence and nurture that respects every one of those timelines, so your firm is visible to the urgent client today and remembered by the long-cycle client when they\'re ready.',
+        headline: 'Your clients decide at very different speeds.',
+        body: '',
+        bodyBullets: [
+          'A criminal defense client decides in hours; an estate planning prospect researches for years',
+          'One-size marketing misses both — urgent clients need instant visibility, long-cycle clients need consistent presence',
+          'We build nurture that fits every timeline so your firm is visible when it matters, regardless of when the client is ready',
+        ],
       },
       {
         number: '03',
-        headline: 'The right matters, not just more leads.',
-        body: 'Volume isn\'t the goal — the right caseload is. A poor-fit matter consumes hours your team doesn\'t have to spare and pays less than the work you should be doing. We tune the system to attract the practice areas, matter types, and client profiles your firm actually wants — by jurisdiction, complexity, and the kind of work that\'s worth your attention.',
+        headline: 'More leads isn\'t the goal. The right caseload is.',
+        body: '',
+        bodyBullets: [
+          'A poor-fit matter consumes hours your team can\'t spare and pays below your rate',
+          'Generalist lead-gen attracts generalist inquiries',
+          'We tune targeting to your practice areas, matter types, and client profiles — so your pipeline fills with work worth your time',
+        ],
       },
     ],
   },
@@ -62,22 +81,22 @@ export const legalConfig: VerticalConfig = {
     {
       // TODO: Verify stat before launch — see brief source notes
       value: '~75%',
-      label: 'of legal consumers research at least three firms online before contacting any one of them',
+      label: 'of legal consumers research at least three firms before contacting any one',
     },
     {
       // TODO: Verify stat before launch — see brief source notes
       value: '60+%',
-      label: 'of new client matters at small law firms originate from referrals — but referred prospects still validate online before calling',
+      label: 'of new client matters at small firms originate from referrals — but referrals still validate online first',
     },
     {
       // TODO: Verify stat before launch — see brief source notes
-      value: '5 minutes',
-      label: 'the response window where conversion rates drop dramatically — legal intake speed is the single biggest performance lever',
+      value: '5 min',
+      label: 'intake response window where conversion rates drop dramatically',
     },
     {
       // TODO: Verify stat before launch — see brief source notes
       value: '30–90 days',
-      label: 'typical research window for non-urgent legal matters (estate planning, business formation, complex transactions)',
+      label: 'typical research window for non-urgent legal matters',
     },
   ] satisfies StatBlock[],
 
@@ -87,6 +106,11 @@ export const legalConfig: VerticalConfig = {
     h2AccentPhrase: 'billable hour by billable hour.',
     intro:
       'Six capabilities, working as one system — tuned to how law firms grow and the state bar rules they operate under.',
+    backgroundImages: [
+      '/assets/illustrations/lawyer_images/Law-firm.jpg',
+      '/assets/illustrations/lawyer_images/rural-lawyer.jpg',
+      '/assets/illustrations/lawyer_images/small-business-lawyer.jpg',
+    ],
     capabilities: [
       {
         featureSubLabel: 'Smart Campaigns',

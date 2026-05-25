@@ -14,6 +14,7 @@ export interface VerticalHero {
   h1AccentPhrase: string
   framingParagraph: string
   heroImage?: string
+  heroOverlay?: string
 }
 
 export interface VerticalInsight {
@@ -25,6 +26,7 @@ export interface MethodologyBlock {
   number: '01' | '02' | '03'
   headline: string
   body: string
+  bodyBullets?: string[]
 }
 
 export interface MethodologyStat {

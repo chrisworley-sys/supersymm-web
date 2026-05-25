@@ -21,7 +21,10 @@ export const taxAccountingConfig: VerticalConfig = {
     h1AccentPhrase: 'Not to market.',
     framingParagraph:
       'SuperSymm helps tax and accounting firms turn expertise into a steady client pipeline. We build the digital framework and performance marketing that increases visibility, captures qualified demand, and grows your book — year-round, not just during tax season, with professional-conduct rules built in.',
-    // heroImage intentionally omitted — dot-grid background renders automatically
+    heroImage: '/assets/illustrations/accountant_hero.jpg',
+    // Darker overlay — more black than pink vs. the FA default
+    heroOverlay:
+      'linear-gradient(93deg, rgba(4,2,8,0.96) 0%, rgba(12,8,20,0.94) 50%, rgba(28,18,42,0.88) 100%)',
   },
 
   insight: {
@@ -35,23 +38,38 @@ export const taxAccountingConfig: VerticalConfig = {
     h2: 'Built around how accounting firms actually grow.',
     h2AccentPhrase: 'actually grow',
     intro:
-      'Three things shape every program we run for a tax or accounting firm. They\'re the three things that actually determine whether marketing works in a seasonal, referral-driven, regulated practice.',
+      'Three problems keep accounting firms from growing predictably. Here\'s how we solve each one.',
     blocks: [
       {
         number: '01',
-        headline: 'Professional conduct rules are the first question, not the last.',
+        headline: 'You can\'t market freely — and generic tools don\'t know that.',
+        body: '',
         // Note: "Circular 230 aware" — not "Circular 230 compliant"
-        body: 'Tax and accounting firms operate under IRS Circular 230, the AICPA Code of Professional Conduct, and state board of accountancy advertising rules — each with specific limits on solicitation, fee references, claims of expertise, and the use of client information in marketing. SuperSymm integrates with your existing review process and builds these guardrails into the workflow itself: pre-publish review, restricted-language flagging, and full archive records. Nothing goes out until it\'s cleared.',
+        bodyBullets: [
+          'Circular 230 and AICPA rules restrict what you can say and how',
+          'Most marketing tools have no concept of professional conduct guardrails',
+          'SuperSymm builds pre-publish review and restricted-language flagging into the workflow — nothing goes out until it\'s cleared',
+        ],
       },
       {
         number: '02',
-        headline: 'A new client is often a multi-year decision.',
-        body: 'Businesses don\'t switch CPAs casually. The journey from first awareness to first engagement usually spans months and gets triggered by a specific event — a growth milestone, a frustration with the current accountant, a new investor demanding tighter financials. We build presence and nurture that respects that timeline, so when the trigger hits, your firm is the one already in their consideration set.',
+        headline: 'Your best prospects aren\'t shopping in February.',
+        body: '',
+        bodyBullets: [
+          'Most firms concentrate marketing in Q1 and go quiet the rest of the year',
+          'Prospects triggered by a growth event or accountant frustration appear year-round',
+          'SuperSymm runs the full calendar so you\'re visible when the trigger hits — not just during tax season',
+        ],
       },
       {
         number: '03',
-        headline: 'The right clients, not just more clients.',
-        body: 'Volume isn\'t the goal — margin is. A client outside your firm\'s sweet spot consumes hours your team doesn\'t have to spare. We tune the system to attract the businesses, industries, and engagement sizes your firm actually wants — the ones with the work you do best and the revenue that justifies your time.',
+        headline: 'More leads isn\'t the goal. Better clients are.',
+        body: '',
+        bodyBullets: [
+          'A poor-fit client consumes hours your team can\'t spare and pays below your rate',
+          'Generalist marketing attracts generalist inquiries',
+          'We tune targeting to your firm\'s sweet spot — industry, revenue size, and the services you do best',
+        ],
       },
     ],
   },
@@ -63,22 +81,22 @@ export const taxAccountingConfig: VerticalConfig = {
     {
       // TODO: Verify stat before launch — see brief source notes
       value: '~75%',
-      label: 'of small business owners stay with their accountant 5+ years once selected — making the consideration window the only realistic acquisition opportunity',
+      label: 'of clients stay 5+ years once they choose an accountant',
     },
     {
       // TODO: Verify stat before launch — see brief source notes
       value: '40%+',
-      label: 'of new client acquisitions for small CPA firms come through referrals — but referred prospects still validate online before committing',
+      label: 'of new clients come through referrals — but still validate online first',
     },
     {
       // TODO: Verify stat before launch — see brief source notes
       value: '60+ days',
-      label: 'typical research window from first awareness to first conversation with a new accounting firm',
+      label: 'average research window before a prospect contacts a CPA firm',
     },
     {
       // TODO: Verify stat before launch — see brief source notes
       value: '3–7x',
-      label: 'the lifetime value of a "right-fit" client compared to a price-shopper — making fit-based targeting the single biggest lever',
+      label: 'lifetime value of a right-fit client vs. a price-shopper',
     },
   ] satisfies StatBlock[],
 
@@ -88,6 +106,14 @@ export const taxAccountingConfig: VerticalConfig = {
     h2AccentPhrase: 'year-round, not just in Q1',
     intro:
       'Six capabilities, working as one system — tuned to how accounting firms grow and the professional conduct rules they operate under.',
+    backgroundImages: [
+      '/assets/illustrations/Accountant_image/Womens history in accounting.jpg',
+      '/assets/illustrations/Accountant_image/istockphoto-1629394760-612x612.jpg',
+      '/assets/illustrations/Accountant_image/istockphoto-2148563157-612x612.jpg',
+      '/assets/illustrations/Accountant_image/istockphoto-2177684417-612x612.jpg',
+      '/assets/illustrations/Accountant_image/istockphoto-2192458619-612x612.jpg',
+      '/assets/illustrations/Accountant_image/types-of-accountants.jpg.webp',
+    ],
     capabilities: [
       {
         featureSubLabel: 'Smart Campaigns',

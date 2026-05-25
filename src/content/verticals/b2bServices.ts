@@ -23,7 +23,10 @@ export const b2bServicesConfig: VerticalConfig = {
     h1AccentPhrase: 'Not to chase leads.',
     framingParagraph:
       'SuperSymm helps B2B services and consulting firms turn expertise into enterprise pipeline. We build the digital framework and account-based marketing that increases visibility at the accounts you actually want — and fills your calendar with meetings, not generic inquiries.',
-    // heroImage intentionally omitted — dot-grid background renders automatically
+    heroImage: '/assets/illustrations/b2b_hero.png',
+    // Dark overlay — near-black with a subtle deep-navy tint
+    heroOverlay:
+      'linear-gradient(93deg, rgba(2,4,10,0.97) 0%, rgba(8,12,24,0.94) 50%, rgba(18,22,40,0.88) 100%)',
   },
 
   insight: {
@@ -37,22 +40,37 @@ export const b2bServicesConfig: VerticalConfig = {
     h2: 'Built around how consulting firms actually grow.',
     h2AccentPhrase: 'actually grow',
     intro:
-      "Three things shape every program we run for a B2B services firm. They're the three things that actually determine whether marketing works when the buyer is a committee, the cycle is long, and the deal size matters.",
+      'Three problems keep B2B services firms from filling their pipeline predictably. Here\'s how we solve each one.',
     blocks: [
       {
         number: '01',
-        headline: 'Credibility is the first question, not the last.',
-        body: "Enterprise buyers don't buy services from firms they haven't heard of. Before any campaign goes live, SuperSymm builds the credibility infrastructure — the content, the proof points, the LinkedIn presence, the case study positioning — that lets a buyer see your firm as a legitimate option before the first conversation. We respect your client confidentiality and competitive positioning at every step.",
+        headline: 'Enterprise buyers won\'t engage firms they haven\'t heard of.',
+        body: '',
+        bodyBullets: [
+          'Most enterprise buyers complete the majority of research before contacting any vendor',
+          'Without credibility infrastructure — content, proof points, LinkedIn presence — you\'re invisible before the first call',
+          'SuperSymm builds that foundation first, so buyers see your firm as a legitimate option before you ever reach out',
+        ],
       },
       {
         number: '02',
-        headline: 'Enterprise decisions take a committee and a quarter.',
-        body: 'B2B services purchases are committee decisions made over months. Six to ten stakeholders touch the deal. The economic buyer is rarely the first contact. We build presence and nurture that reaches all the stakeholders, holds attention across the long cycle, and gives champions inside the prospect\'s organization the material they need to make your case internally.',
+        headline: 'A single contact rarely closes the deal.',
+        body: '',
+        bodyBullets: [
+          'B2B services purchases involve 6–10 stakeholders and take months to close',
+          'Marketing that reaches only one person at one moment misses the committee',
+          'We build multi-stakeholder presence and nurture that keeps your firm visible across the full decision cycle',
+        ],
       },
       {
         number: '03',
-        headline: 'The right accounts, not just more leads.',
-        body: "Volume isn't the goal — target accounts are. A generic inbound lead from outside your ICP wastes your senior team's hours and signals the wrong positioning to the market. We tune the system to focus on your named target accounts and their lookalikes — by company size, industry, technology stack, growth stage, and the specific roles that decide on your service.",
+        headline: 'Generic inbound wastes your senior team\'s time.',
+        body: '',
+        bodyBullets: [
+          'A lead outside your ICP signals the wrong positioning and burns hours on a dead end',
+          'Volume isn\'t the goal — target accounts are',
+          'We tune the system to your named accounts and lookalikes — by company size, industry, and the roles that buy your service',
+        ],
       },
     ],
   },
@@ -64,22 +82,22 @@ export const b2bServicesConfig: VerticalConfig = {
     {
       // TODO: Verify stat before launch — see brief source notes
       value: '6–10',
-      label: 'stakeholders typically involved in a B2B services purchase decision, making single-contact marketing ineffective',
+      label: 'stakeholders involved in a typical B2B services purchase',
     },
     {
       // TODO: Verify stat before launch — see brief source notes
       value: '~75%',
-      label: "of B2B buyers complete the majority of their research before contacting any vendor — making digital presence the de facto first interview",
+      label: 'of B2B buyers finish their research before contacting a vendor',
     },
     {
       // TODO: Verify stat before launch — see brief source notes
       value: '60–180 days',
-      label: 'typical B2B services sales cycle, depending on deal complexity and stakeholder count',
+      label: 'typical sales cycle for B2B services engagements',
     },
     {
       // TODO: Verify stat before launch — see brief source notes
       value: '3–5x',
-      label: 'the lifetime value of an account-based engagement compared to one-off project work — making target-account marketing the highest-leverage growth lever',
+      label: 'lifetime value of account-based vs. one-off project work',
     },
   ] satisfies StatBlock[],
 
@@ -89,6 +107,13 @@ export const b2bServicesConfig: VerticalConfig = {
     h2AccentPhrase: 'on purpose.',
     intro:
       'Six capabilities, working as one system — tuned to how B2B services firms grow and the long-cycle, multi-stakeholder reality they operate in.',
+    backgroundImages: [
+      '/assets/illustrations/b2b_images/6773ba6681dfccbd4f4fb98e_iStock-1197932646(3)(2).jpg',
+      '/assets/illustrations/b2b_images/B2B-Digital-Marketing-Agency-scaled-uai-900x563.jpeg',
+      '/assets/illustrations/b2b_images/How-to-achieve-effective-B2B-marketing-on-digital-channels-step-by-step-iPROM-Blog-Uros-Koncar-1.png',
+      '/assets/illustrations/b2b_images/Meaningful-B2B-Customer-Connections-1.jpg',
+      '/assets/illustrations/b2b_images/xl-2018-business-meeting-1.jpg',
+    ],
     capabilities: [
       {
         featureSubLabel: 'Smart Campaigns',
