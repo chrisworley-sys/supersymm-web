@@ -1,2 +1,6 @@
 *.gif filter=lfs diff=lfs merge=lfs -text
 *.mp4 filter=lfs diff=lfs merge=lfs -text
+
+# Vercel cannot fetch LFS files at deploy time. Track this specific
+# video as a regular git file so it ships with the build.
+public/assets/illustrations/market_auto_hero.mp4 !filter !diff !merge binary
