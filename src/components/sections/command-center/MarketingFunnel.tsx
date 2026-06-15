@@ -225,13 +225,9 @@ export default function MarketingFunnel() {
       setScale(s)
     }
     fit()
-    if ('ResizeObserver' in window) {
-      const ro = new ResizeObserver(fit)
-      ro.observe(wrap)
-      return () => ro.disconnect()
-    }
-    window.addEventListener('resize', fit)
-    return () => window.removeEventListener('resize', fit)
+    const ro = new ResizeObserver(fit)
+    ro.observe(wrap)
+    return () => ro.disconnect()
   }, [])
 
   /* Kick off pulse animations when the funnel scrolls into view */
