@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion, type Variants } from 'framer-motion'
 import {
   ArrowRight,
@@ -65,28 +64,28 @@ const layerCallouts = [
   {
     Icon: Brain,
     label: 'Layer 01 · Intelligence',
-    headline: 'The context layer',
+    headline: 'Know Your Business',
     sub: 'Your market, buyers, voice, and compliance posture — the foundation every other layer runs on.',
     anchor: '#layer-intelligence',
   },
   {
     Icon: Target,
     label: 'Layer 02 · Strategy',
-    headline: 'The plan',
+    headline: 'Build the Funnels',
     sub: 'Channel mix, messaging, sequencing, and campaign blueprints built from your business context.',
     anchor: '#layer-strategy',
   },
   {
     Icon: Zap,
     label: 'Layer 03 · Execution',
-    headline: 'The engine',
+    headline: 'Generate Leads',
     sub: 'Content shipped, leads scored, distribution everywhere. One approval — published across channels.',
     anchor: '#layer-execution',
   },
   {
     Icon: TrendingUp,
     label: 'Layer 04 · Optimization',
-    headline: 'The feedback loop',
+    headline: 'Optimize & Analyze',
     sub: 'Performance data sharpens Intelligence so the next campaign starts smarter than the last.',
     anchor: '#layer-optimization',
   },
@@ -96,29 +95,26 @@ const pillars = [
   {
     num: '01',
     title: 'Disconnected Execution',
-    h3: 'Marketing running in silos to a connected platform.',
+    h3Before: 'Marketing running in silos',
+    h3Highlight: 'to a connected platform.',
     problem: "Your SEO, email, and social all run in separate silos. Insights stay trapped inside each tool — and no one's connecting the dots.",
     solution: 'One intelligence layer connects every channel — so what works anywhere improves everything.',
-    link: '/platform',
-    linkLabel: 'Learn more about the Platform',
   },
   {
     num: '02',
     title: 'Inconsistent Brand',
-    h3: 'Inconsistent communications to one voice across channels.',
+    h3Before: 'Inconsistent communications',
+    h3Highlight: 'to one voice across channels.',
     problem: 'Brand voice drifts by channel. Prospects see a different story on LinkedIn, your website, and in email. Every touchpoint feels like starting over.',
     solution: 'One messaging framework, built once, applied consistently across every channel and campaign.',
-    link: '/platform/marketing-automation',
-    linkLabel: 'Learn about Marketing Automation',
   },
   {
     num: '03',
     title: 'No Intelligence Layer',
-    h3: 'Random tactics and activity to intelligence driven decisioning.',
+    h3Before: 'Random tactics and activity',
+    h3Highlight: 'to intelligence driven decisioning.',
     problem: "Content gets created without real market insight. You're executing tactics without knowing whether they're the right ones.",
     solution: 'Strategy built from real market intelligence — so every tactic has a purpose and every dollar goes further.',
-    link: '/platform/business-intelligence',
-    linkLabel: 'Learn about Business Intelligence',
   },
 ]
 
@@ -556,7 +552,7 @@ function HeroSection() {
               </motion.div>
 
               <a
-                href="#problem"
+                href="#integrated-systems"
                 className="font-sans font-medium text-white hover:underline inline-flex items-center gap-1.5"
                 style={{ fontSize: '16px' }}
               >
@@ -799,7 +795,10 @@ export default function CommandCenterPage() {
                     className="font-display font-bold text-ss-neutral-700 mb-3"
                     style={{ fontSize: '20px', lineHeight: 1.25 }}
                   >
-                    {p.h3}
+                    {p.h3Before}{' '}
+                    <em className="font-serif italic not-italic" style={gradientText}>
+                      {p.h3Highlight}
+                    </em>
                   </h3>
                   <p className="font-sans text-ss-neutral-700/85 leading-relaxed text-[15px] mb-5">
                     {p.problem}
@@ -818,15 +817,9 @@ export default function CommandCenterPage() {
                     >
                       SuperSymm
                     </p>
-                    <p className="font-sans text-[14px] leading-[1.65] text-ss-neutral-600 mb-3">
+                    <p className="font-sans text-[14px] leading-[1.65] text-ss-neutral-600">
                       {p.solution}
                     </p>
-                    <Link
-                      to={p.link}
-                      className="inline-flex items-center gap-1.5 font-sans text-[13px] font-medium text-ss-purple-500 hover:text-ss-purple-600 transition-colors"
-                    >
-                      {p.linkLabel} <ArrowRight className="size-3.5" />
-                    </Link>
                   </div>
                 </motion.div>
               ))}
@@ -1181,17 +1174,11 @@ export default function CommandCenterPage() {
                     ))}
                   </ul>
                   <p
-                    className="font-sans text-sm font-semibold text-ss-purple-500 italic mt-auto mb-4"
+                    className="font-sans text-sm font-semibold text-ss-purple-500 italic mt-auto"
                     style={{ fontFamily: "'Newsreader', serif" }}
                   >
                     {layer.unique}
                   </p>
-                  <Link
-                    to={layer.link}
-                    className="inline-flex items-center gap-1.5 font-sans text-[13px] font-medium text-ss-purple-500 hover:text-ss-purple-600 transition-colors"
-                  >
-                    {layer.learnMore} <ArrowRight className="size-3.5" />
-                  </Link>
                 </motion.div>
               ))}
             </motion.div>
@@ -1452,8 +1439,14 @@ export default function CommandCenterPage() {
         {/* ── SECTION 8: The Content Map ── */}
         <section
           id="content-map"
-          className="bg-white"
-          style={{ paddingBlock: 'clamp(96px, 10vw, 140px)' }}
+          style={{
+            paddingBlock: 'clamp(96px, 10vw, 140px)',
+            background:
+              contentMapView === 'backend'
+                ? 'linear-gradient(180deg, #DBDEF0 0%, #D2D6ED 55%, #CDD2EA 100%)'
+                : 'linear-gradient(135deg, #1B0A20 0%, #22193B 35%, #2D1B4E 65%, #1B0A20 100%)',
+            transition: 'background 0.4s ease',
+          }}
         >
           <div className="mx-auto w-full max-w-[1200px] px-6">
             <motion.div
@@ -1464,31 +1457,56 @@ export default function CommandCenterPage() {
             >
               <motion.p
                 variants={rv}
-                className="font-sans font-medium uppercase text-ss-neutral-400 mb-4"
-                style={{ fontSize: '13px', letterSpacing: '0.08em' }}
+                className="font-sans font-medium uppercase mb-4"
+                style={{
+                  fontSize: '13px',
+                  letterSpacing: '0.08em',
+                  color:
+                    contentMapView === 'backend'
+                      ? 'rgba(31,30,33,0.55)'
+                      : 'rgba(255,255,255,0.50)',
+                }}
               >
                 What it looks like in practice
               </motion.p>
               <motion.h2
                 variants={rv}
-                className="font-display font-black leading-[1.1] text-ss-neutral-700 mb-5"
-                style={{ fontSize: 'clamp(32px, 4vw, 52px)' }}
+                className="font-display font-black leading-[1.1] mb-5"
+                style={{
+                  fontSize: 'clamp(32px, 4vw, 52px)',
+                  color: contentMapView === 'backend' ? '#1F1E21' : '#FFFFFF',
+                }}
               >
                 Behind every great lead experience is a content map that{' '}
-                <em className="font-serif italic not-italic" style={gradientText}>
+                <em
+                  className="font-serif italic not-italic"
+                  style={contentMapView === 'backend' ? gradientText : gradientTextDark}
+                >
                   thinks ahead.
                 </em>
               </motion.h2>
               <motion.p
                 variants={rv}
-                className="font-sans text-[18px] leading-[1.6] text-ss-neutral-500 mb-4"
+                className="font-sans text-[18px] leading-[1.6] mb-4"
+                style={{
+                  color:
+                    contentMapView === 'backend'
+                      ? 'rgba(31,30,33,0.70)'
+                      : 'rgba(255,255,255,0.75)',
+                }}
               >
                 This is the choreography that turns a stranger into a qualified conversation. Every
                 piece of content mapped, sequenced, and pre-built before the lead even arrives.
               </motion.p>
               <motion.p
                 variants={rv}
-                className="font-sans text-[16px] leading-[1.6] text-ss-neutral-400"
+                className="font-sans text-[16px] leading-[1.6]"
+                style={{
+                  color:
+                    contentMapView === 'backend'
+                      ? 'rgba(31,30,33,0.55)'
+                      : 'rgba(255,255,255,0.55)',
+                }}
               >
                 Most marketing reacts. SuperSymm anticipates. Before a prospect like Sarah ever
                 encounters your brand, the content map already knows what she'll need, when she'll
@@ -1503,7 +1521,7 @@ export default function CommandCenterPage() {
                 className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-colors ${
                   contentMapView === 'backend'
                     ? 'bg-ss-purple-500 text-white'
-                    : 'bg-ss-neutral-100 text-ss-neutral-700 hover:bg-ss-neutral-200'
+                    : 'bg-white/10 text-white hover:bg-white/20'
                 }`}
               >
                 ⚙️ Content Map (Backend)
@@ -1513,7 +1531,7 @@ export default function CommandCenterPage() {
                 className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-colors ${
                   contentMapView === 'example'
                     ? 'bg-ss-purple-500 text-white'
-                    : 'bg-ss-neutral-100 text-ss-neutral-700 hover:bg-ss-neutral-200'
+                    : 'bg-ss-purple-700/10 text-ss-neutral-700 hover:bg-ss-purple-700/20'
                 }`}
               >
                 👤 User Pathway
@@ -1530,7 +1548,10 @@ export default function CommandCenterPage() {
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
                 >
-                  <p className="text-lg font-semibold text-center text-ss-neutral-700 mb-8">
+                  <p
+                    className="text-lg font-semibold text-center mb-8"
+                    style={{ color: 'rgba(31,30,33,0.75)' }}
+                  >
                     Every asset, trigger, and rule — pre-built before a lead arrives.
                   </p>
                   <MarketingFunnel />
@@ -1549,40 +1570,6 @@ export default function CommandCenterPage() {
               )}
             </AnimatePresence>
 
-            {/* The Lesson */}
-            <div className="mt-16 mx-auto" style={{ maxWidth: '760px' }}>
-              <motion.h3
-                variants={rv}
-                {...inView('-40px')}
-                className="font-display font-bold text-2xl text-center text-ss-neutral-700 mb-5"
-              >
-                Every piece of content is built before she needs it.
-              </motion.h3>
-              <motion.p
-                variants={rv}
-                {...inView('-40px')}
-                className="font-sans text-base text-ss-neutral-700/85 leading-relaxed text-center mb-8"
-              >
-                Sarah didn't experience marketing automation. She experienced a relationship that
-                happened to be running on a system. That's the difference between automating tasks
-                and orchestrating journeys. The content map exists before the lead does. Articles,
-                emails, webinars, calculators, ad creative, sales dossiers — all pre-built, mapped
-                to specific buyer stages, and choreographed to fire at the right moment based on
-                what Sarah actually does.
-              </motion.p>
-              <motion.div
-                variants={rv}
-                {...inView('-40px')}
-                className="text-center"
-              >
-                <a
-                  href="#cta"
-                  className="inline-flex items-center gap-1.5 font-sans text-[15px] font-medium text-ss-purple-500 hover:text-ss-purple-600 transition-colors"
-                >
-                  See how the content map gets built <ArrowRight className="size-4" />
-                </a>
-              </motion.div>
-            </div>
           </div>
         </section>
 
@@ -1628,7 +1615,7 @@ export default function CommandCenterPage() {
               variants={rs}
               {...inView('-40px')}
             >
-              {industries.map(({ name, badge, body, link }) => (
+              {industries.map(({ name, badge, body }) => (
                 <motion.div
                   key={name}
                   variants={rv}
@@ -1677,21 +1664,13 @@ export default function CommandCenterPage() {
                   >
                     {body}
                   </p>
-
-                  <Link
-                    to={link}
-                    className="inline-flex items-center gap-1.5 font-sans text-sm font-medium hover:opacity-80 transition-opacity"
-                    style={{ color: '#E977C1' }}
-                  >
-                    Learn More <ArrowRight className="size-3.5" />
-                  </Link>
                 </motion.div>
               ))}
             </motion.div>
 
             {/* Closing */}
             <motion.div
-              className="mt-12 text-center space-y-5"
+              className="mt-12 text-center"
               variants={rv}
               {...inView('-40px')}
             >
@@ -1702,17 +1681,6 @@ export default function CommandCenterPage() {
                 Whether you serve individuals or businesses, SuperSymm adapts to your audience,
                 your industry, and your compliance requirements.
               </p>
-              <motion.div
-                whileTap={prefersReduced ? undefined : { scale: 0.97 }}
-                className="inline-block"
-              >
-                <Link
-                  to="/solutions"
-                  className="inline-flex items-center gap-2 bg-ss-accent-100 text-ss-purple-700 font-sans font-medium text-base px-8 py-3 rounded-full hover:bg-ss-accent-200 transition-colors"
-                >
-                  Explore Industry Solutions <ArrowRight className="size-4" />
-                </Link>
-              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -2000,21 +1968,23 @@ export default function CommandCenterPage() {
                   whileHover={prefersReduced ? undefined : { scale: 1.03 }}
                   whileTap={prefersReduced ? undefined : { scale: 0.97 }}
                 >
-                  <Link
-                    to="/demo"
+                  {/* TODO: replace with real contact destination */}
+                  <a
+                    href="mailto:chris@supersymm.com?subject=Demo%20Request"
                     className="inline-flex items-center gap-2 rounded-full bg-ss-accent-100 text-ss-purple-700 font-semibold px-8 py-4 no-underline"
                     style={{ fontSize: '14px' }}
                   >
                     Book a Demo <ArrowRight className="size-4" />
-                  </Link>
+                  </a>
                 </motion.div>
-                <Link
-                  to="/pricing"
+                {/* TODO: replace with real contact destination */}
+                <a
+                  href="mailto:chris@supersymm.com?subject=Custom%20Pricing"
                   className="inline-flex items-center gap-1.5 font-semibold transition-colors"
                   style={{ fontSize: '14px', color: 'rgba(255,255,255,0.80)' }}
                 >
                   Get Custom Pricing <ArrowRight className="size-4" />
-                </Link>
+                </a>
               </motion.div>
 
               <motion.p

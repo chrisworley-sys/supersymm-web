@@ -5,9 +5,10 @@ import { cn } from '@/lib/utils'
 type NavItem = { label: string; href: string }
 
 const navItems: NavItem[] = [
-  { label: 'Platform', href: '#layers' },
-  { label: 'Solutions', href: '#who-we-serve' },
-  { label: 'Pricing', href: '#why-different' },
+  { label: 'The Problem', href: '#problem' },
+  { label: 'How It Works', href: '#integrated-systems' },
+  { label: 'Capabilities', href: '#capabilities' },
+  { label: 'Who We Serve', href: '#who-we-serve' },
   { label: 'About', href: '#how-we-work' },
 ]
 
