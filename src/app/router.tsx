@@ -19,6 +19,7 @@ import HomePageV2Video from '@/pages/HomePageV2Video'
 //import HomePageV3 from '@/pages/HomePageV3'
 import BusinessIntelligencePage from '@/pages/BusinessIntelligencePage'
 import CompliancePage from '@/pages/CompliancePage'
+import CommandCenterPage from '@/pages/CommandCenterPage'
 import DemoPage from '@/pages/DemoPage'
 import ContactPage from '@/pages/ContactPage'
 
@@ -41,6 +42,7 @@ children: [
   { path: 'solutions/tax-and-accounting', element: <TaxAccountingPage /> },
   { path: 'solutions/b2b-services', element: <B2BServicesPage /> },
   { path: 'pricing', element: <PricingPage /> },
+  { path: 'command-center', element: <CommandCenterPage /> },
   { path: 'about', element: <AboutPage /> },
   { path: 'privacy', element: <PrivacyPage /> },
   { path: 'terms', element: <TermsPage /> },
