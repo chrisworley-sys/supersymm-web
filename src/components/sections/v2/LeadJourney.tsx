@@ -52,7 +52,11 @@ const stages = [
   },
 ]
 
-export default function LeadJourney() {
+type LeadJourneyProps = {
+  hideCta?: boolean
+}
+
+export default function LeadJourney({ hideCta = false }: LeadJourneyProps) {
   const prefersReduced = useReducedMotion()
 
   const inView = {
@@ -208,21 +212,23 @@ export default function LeadJourney() {
         </div>
 
         {/* Closing CTA */}
-        <motion.div
-          className="mt-16 text-center"
-          variants={prefersReduced ? {} : fadeUp}
-          {...inView}
-        >
-          <MotionLink
-            to="/platform"
-            className="inline-flex items-center gap-2 bg-ss-accent-100 text-ss-purple-700 font-sans font-medium text-base px-8 rounded-full hover:bg-ss-accent-200 transition-colors"
-            style={{ height: '56px' }}
-            whileTap={prefersReduced ? {} : { scale: 0.97 }}
-            transition={{ duration: 0.1 }}
+        {!hideCta && (
+          <motion.div
+            className="mt-16 text-center"
+            variants={prefersReduced ? {} : fadeUp}
+            {...inView}
           >
-            See the System in Action <ArrowRight className="size-4" />
-          </MotionLink>
-        </motion.div>
+            <MotionLink
+              to="/platform"
+              className="inline-flex items-center gap-2 bg-ss-accent-100 text-ss-purple-700 font-sans font-medium text-base px-8 rounded-full hover:bg-ss-accent-200 transition-colors"
+              style={{ height: '56px' }}
+              whileTap={prefersReduced ? {} : { scale: 0.97 }}
+              transition={{ duration: 0.1 }}
+            >
+              See the System in Action <ArrowRight className="size-4" />
+            </MotionLink>
+          </motion.div>
+        )}
 
       </div>
     </section>

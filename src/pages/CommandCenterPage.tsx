@@ -16,7 +16,7 @@ import type React from 'react'
 
 import CommandCenterNav from '@/components/common/CommandCenterNav'
 import PageWrapper from '@/components/common/PageWrapper'
-import FooterV2 from '@/components/sections/v2/FooterV2'
+import CommandCenterFooter from '@/components/sections/command-center/CommandCenterFooter'
 import BIHeroSection from '@/components/sections/business-intelligence/BIHeroSection'
 import ChallengeIllustration from '@/components/sections/marketing-automation/illustrations/ChallengeIllustration'
 import MarketingFunnel from '@/components/sections/command-center/MarketingFunnel'
@@ -35,6 +35,13 @@ const gradientText: React.CSSProperties = {
 
 const gradientTextDark: React.CSSProperties = {
   background: 'linear-gradient(93deg, #ACA1D2, #F36BC1)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+}
+
+const gradientTextOnLavender: React.CSSProperties = {
+  background: 'linear-gradient(93deg, #43336D, #D331A0)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
@@ -1480,7 +1487,7 @@ export default function CommandCenterPage() {
                 Behind every great lead experience is a content map that{' '}
                 <em
                   className="font-serif italic not-italic"
-                  style={contentMapView === 'backend' ? gradientText : gradientTextDark}
+                  style={contentMapView === 'backend' ? gradientTextOnLavender : gradientTextDark}
                 >
                   thinks ahead.
                 </em>
@@ -1563,9 +1570,8 @@ export default function CommandCenterPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="rounded-2xl overflow-hidden"
                 >
-                  <LeadJourney />
+                  <LeadJourney hideCta />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -2009,7 +2015,7 @@ export default function CommandCenterPage() {
         </section>
       </main>
 
-      <FooterV2 />
+      <CommandCenterFooter />
 
       {/* ── Core Principles Modal ── */}
       <AnimatePresence>

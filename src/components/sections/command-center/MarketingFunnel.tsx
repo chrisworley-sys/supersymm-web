@@ -290,30 +290,13 @@ export default function MarketingFunnel() {
         }
       `}</style>
 
-      {/* Outer lavender section with radial accents */}
-      <div
-        className="rounded-2xl overflow-hidden"
-        style={{
-          background: 'var(--ss-bg-lavender, #D2D6ED)',
-          backgroundImage: `
-            radial-gradient(60% 50% at 80% 12%, rgba(233,119,193,0.20), transparent 60%),
-            radial-gradient(55% 55% at 8% 92%, rgba(233,119,193,0.12), transparent 60%),
-            linear-gradient(180deg, #DBDEF0 0%, #D2D6ED 55%, #CDD2EA 100%)
-          `,
-          padding: '36px 28px 32px',
-        }}
-      >
-        {/* Glass panel containing the scaled canvas */}
+      {/* Transparent wrapper — lets the parent section's background show through seamlessly */}
+      <div style={{ padding: '0' }}>
+        {/* Inner panel — borderless, no card edge */}
         <div
           style={{
             position: 'relative',
-            borderRadius: '28px',
-            background: 'rgba(255,255,255,0.30)',
-            border: '1px solid rgba(255,255,255,0.55)',
-            boxShadow:
-              'inset 0 1px 0 rgba(255,255,255,0.7), 0 30px 70px -44px rgba(34,25,59,0.5)',
-            backdropFilter: 'blur(4px)',
-            WebkitBackdropFilter: 'blur(4px)',
+            background: 'transparent',
             overflow: 'hidden',
           }}
         >
