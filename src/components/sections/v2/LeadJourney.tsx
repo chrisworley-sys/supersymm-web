@@ -54,9 +54,10 @@ const stages = [
 
 type LeadJourneyProps = {
   hideCta?: boolean
+  transparent?: boolean
 }
 
-export default function LeadJourney({ hideCta = false }: LeadJourneyProps) {
+export default function LeadJourney({ hideCta = false, transparent = false }: LeadJourneyProps) {
   const prefersReduced = useReducedMotion()
 
   const inView = {
@@ -68,12 +69,17 @@ export default function LeadJourney({ hideCta = false }: LeadJourneyProps) {
   return (
     <section
       id="journey"
-      style={{
-        background: 'linear-gradient(135deg, #1B0A20 0%, #22193B 35%, #2D1B4E 65%, #1B0A20 100%)',
-        backgroundSize: '400% 400%',
-        animation: prefersReduced ? 'none' : 'hero-gradient-shift 35s ease-in-out infinite',
-        paddingBlock: 'clamp(80px, 10vw, 160px)',
-      }}
+      style={
+        transparent
+          ? { background: 'transparent', paddingBlock: '0' }
+          : {
+              background:
+                'linear-gradient(135deg, #1B0A20 0%, #22193B 35%, #2D1B4E 65%, #1B0A20 100%)',
+              backgroundSize: '400% 400%',
+              animation: prefersReduced ? 'none' : 'hero-gradient-shift 35s ease-in-out infinite',
+              paddingBlock: 'clamp(80px, 10vw, 160px)',
+            }
+      }
     >
       <div className="mx-auto w-full max-w-[1200px] px-6">
 

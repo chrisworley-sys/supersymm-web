@@ -27,24 +27,30 @@ import LeadJourney from '@/components/sections/v2/LeadJourney'
    ──────────────────────────────────────────────────────────────── */
 
 const gradientText: React.CSSProperties = {
-  background: 'linear-gradient(93deg, #8978BE, #E977C1)',
+  backgroundImage: 'linear-gradient(93deg, #8978BE, #E977C1)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
+  color: 'transparent',
+  display: 'inline-block',
 }
 
 const gradientTextDark: React.CSSProperties = {
-  background: 'linear-gradient(93deg, #ACA1D2, #F36BC1)',
+  backgroundImage: 'linear-gradient(93deg, #ACA1D2, #F36BC1)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
+  color: 'transparent',
+  display: 'inline-block',
 }
 
 const gradientTextOnLavender: React.CSSProperties = {
-  background: 'linear-gradient(93deg, #43336D, #D331A0)',
+  backgroundImage: 'linear-gradient(93deg, #43336D, #D331A0)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
+  color: 'transparent',
+  display: 'inline-block',
 }
 
 const italicBenefit: React.CSSProperties = {
@@ -155,13 +161,12 @@ const CHALLENGE_BORDER_COLOR = 'rgba(103, 80, 164, 0.1)'
 type Layer = {
   id: string
   num: string
+  category: string
   name: string
   tagline: string
   description: string
   bullets: string[]
   unique: string
-  learnMore: string
-  link: string
   borderColor: string
 }
 
@@ -169,7 +174,8 @@ const layers: Layer[] = [
   {
     id: 'layer-intelligence',
     num: '01',
-    name: 'Intelligence',
+    category: 'Intelligence',
+    name: 'Know Your Business',
     tagline: 'The context layer.',
     description:
       "The foundation of the command center. Intelligence is what the system knows about your business — your market, your buyers, your differentiators, your voice, your compliance posture. It's not a step. It's the context that runs through everything else, making every capability personalized to your business and connected to the others.",
@@ -180,14 +186,13 @@ const layers: Layer[] = [
       'Compliance posture and regulatory framework',
     ],
     unique: 'This is what makes SuperSymm different. Intelligence first, execution second.',
-    learnMore: 'Learn More About Business Intelligence',
-    link: '/platform/business-intelligence',
     borderColor: '#6750A4',
   },
   {
     id: 'layer-strategy',
     num: '02',
-    name: 'Strategy',
+    category: 'Strategy',
+    name: 'Build the Funnels',
     tagline: 'The plan.',
     description:
       'Strategy draws from Intelligence to decide what to say, where, when, and to whom. Channel mix, messaging architecture, sequencing, campaign blueprints — all built from your business context, not generic best practices.',
@@ -198,14 +203,13 @@ const layers: Layer[] = [
       'Compliance posture built in from day one',
     ],
     unique: 'Your strategy. Not a template applied to your business.',
-    learnMore: 'See How Strategy Works',
-    link: '/platform',
     borderColor: '#E977C1',
   },
   {
     id: 'layer-execution',
     num: '03',
-    name: 'Execution',
+    category: 'Execution',
+    name: 'Generate Leads',
     tagline: 'The engine.',
     description:
       'Strategy turns into shipped marketing. Content created, distributed across every channel, leads captured, scored, and routed. One approval — published everywhere. Compliant by default for regulated industries.',
@@ -216,14 +220,13 @@ const layers: Layer[] = [
       '5-year archiving for regulated industries',
     ],
     unique: 'One approval. Distributed everywhere. Compliance built in, not bolted on.',
-    learnMore: 'Explore Marketing Automation',
-    link: '/platform/marketing-automation',
     borderColor: '#8DA450',
   },
   {
     id: 'layer-optimization',
     num: '04',
-    name: 'Optimization',
+    category: 'Optimization',
+    name: 'Optimize & Analyze',
     tagline: 'The feedback loop.',
     description:
       'Every interaction teaches the system. Performance data feeds back into Intelligence, sharpening context for the next campaign. Your marketing improves itself — automatically.',
@@ -234,8 +237,6 @@ const layers: Layer[] = [
       'Performance insights that re-train Intelligence',
     ],
     unique: 'Most platforms give you data. SuperSymm gives you insights and takes action automatically.',
-    learnMore: 'See Performance Optimization',
-    link: '/platform',
     borderColor: '#66CEB6',
   },
 ]
@@ -1148,7 +1149,7 @@ export default function CommandCenterPage() {
                     className="font-sans font-bold uppercase tracking-widest text-ss-purple-500"
                     style={{ fontSize: '13px', marginBottom: '4px' }}
                   >
-                    Layer {layer.num} — {layer.name}
+                    Layer {layer.num} — {layer.category}
                   </p>
                   <p
                     className="mb-3"
@@ -1571,7 +1572,7 @@ export default function CommandCenterPage() {
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
                 >
-                  <LeadJourney hideCta />
+                  <LeadJourney hideCta transparent />
                 </motion.div>
               )}
             </AnimatePresence>
