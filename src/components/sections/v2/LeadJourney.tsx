@@ -55,9 +55,14 @@ const stages = [
 type LeadJourneyProps = {
   hideCta?: boolean
   transparent?: boolean
+  hideHeader?: boolean
 }
 
-export default function LeadJourney({ hideCta = false, transparent = false }: LeadJourneyProps) {
+export default function LeadJourney({
+  hideCta = false,
+  transparent = false,
+  hideHeader = false,
+}: LeadJourneyProps) {
   const prefersReduced = useReducedMotion()
 
   const inView = {
@@ -84,23 +89,25 @@ export default function LeadJourney({ hideCta = false, transparent = false }: Le
       <div className="mx-auto w-full max-w-[1200px] px-6">
 
         {/* Header */}
-        <motion.div
-          className="mx-auto max-w-[720px] text-center mb-16"
-          variants={prefersReduced ? {} : fadeUp}
-          {...inView}
-        >
-          <p className="font-sans text-[13px] uppercase tracking-[0.08em] font-medium text-ss-accent-100 mb-4">
-            How a lead moves through the system
-          </p>
-          <h2 className="font-display font-black leading-[1.1] text-white mb-6" style={{ fontSize: 'clamp(30px, 4vw, 48px)' }}>
-            From cold visitor to{' '}
-            <em className="font-serif italic" style={gradientText}>qualified lead.</em>
-          </h2>
-          <p className="font-sans text-[18px] leading-[1.6]" style={{ color: 'rgba(255,255,255,0.65)' }}>
-            Most marketing platforms automate tasks. SuperSymm orchestrates relationships.
-            Here's what one prospect's journey looks like from first touch to qualified handoff.
-          </p>
-        </motion.div>
+        {!hideHeader && (
+          <motion.div
+            className="mx-auto max-w-[720px] text-center mb-16"
+            variants={prefersReduced ? {} : fadeUp}
+            {...inView}
+          >
+            <p className="font-sans text-[13px] uppercase tracking-[0.08em] font-medium text-ss-accent-100 mb-4">
+              How a lead moves through the system
+            </p>
+            <h2 className="font-display font-black leading-[1.1] text-white mb-6" style={{ fontSize: 'clamp(30px, 4vw, 48px)' }}>
+              From cold visitor to{' '}
+              <em className="font-serif italic" style={gradientText}>qualified lead.</em>
+            </h2>
+            <p className="font-sans text-[18px] leading-[1.6]" style={{ color: 'rgba(255,255,255,0.65)' }}>
+              Most marketing platforms automate tasks. SuperSymm orchestrates relationships.
+              Here's what one prospect's journey looks like from first touch to qualified handoff.
+            </p>
+          </motion.div>
+        )}
 
         {/* Desktop 4-column journey */}
         <motion.div

@@ -31,8 +31,7 @@ const gradientText: React.CSSProperties = {
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
-  color: 'transparent',
-  display: 'inline-block',
+  fontStyle: 'italic',
 }
 
 const gradientTextDark: React.CSSProperties = {
@@ -40,8 +39,7 @@ const gradientTextDark: React.CSSProperties = {
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
-  color: 'transparent',
-  display: 'inline-block',
+  fontStyle: 'italic',
 }
 
 const gradientTextOnLavender: React.CSSProperties = {
@@ -49,8 +47,7 @@ const gradientTextOnLavender: React.CSSProperties = {
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
-  color: 'transparent',
-  display: 'inline-block',
+  fontStyle: 'italic',
 }
 
 const italicBenefit: React.CSSProperties = {
@@ -1457,79 +1454,33 @@ export default function CommandCenterPage() {
           }}
         >
           <div className="mx-auto w-full max-w-[1200px] px-6">
-            <motion.div
-              variants={rs}
+            {/* Eyebrow */}
+            <motion.p
+              variants={rv}
               {...inView('-80px')}
-              className="text-center mx-auto mb-12"
-              style={{ maxWidth: '820px' }}
+              className="font-sans font-medium uppercase text-center mb-6"
+              style={{
+                fontSize: '13px',
+                letterSpacing: '0.08em',
+                color:
+                  contentMapView === 'backend'
+                    ? 'rgba(31,30,33,0.55)'
+                    : 'rgba(255,255,255,0.50)',
+              }}
             >
-              <motion.p
-                variants={rv}
-                className="font-sans font-medium uppercase mb-4"
-                style={{
-                  fontSize: '13px',
-                  letterSpacing: '0.08em',
-                  color:
-                    contentMapView === 'backend'
-                      ? 'rgba(31,30,33,0.55)'
-                      : 'rgba(255,255,255,0.50)',
-                }}
-              >
-                What it looks like in practice
-              </motion.p>
-              <motion.h2
-                variants={rv}
-                className="font-display font-black leading-[1.1] mb-5"
-                style={{
-                  fontSize: 'clamp(32px, 4vw, 52px)',
-                  color: contentMapView === 'backend' ? '#1F1E21' : '#FFFFFF',
-                }}
-              >
-                Behind every great lead experience is a content map that{' '}
-                <em
-                  className="font-serif italic not-italic"
-                  style={contentMapView === 'backend' ? gradientTextOnLavender : gradientTextDark}
-                >
-                  thinks ahead.
-                </em>
-              </motion.h2>
-              <motion.p
-                variants={rv}
-                className="font-sans text-[18px] leading-[1.6] mb-4"
-                style={{
-                  color:
-                    contentMapView === 'backend'
-                      ? 'rgba(31,30,33,0.70)'
-                      : 'rgba(255,255,255,0.75)',
-                }}
-              >
-                This is the choreography that turns a stranger into a qualified conversation. Every
-                piece of content mapped, sequenced, and pre-built before the lead even arrives.
-              </motion.p>
-              <motion.p
-                variants={rv}
-                className="font-sans text-[16px] leading-[1.6]"
-                style={{
-                  color:
-                    contentMapView === 'backend'
-                      ? 'rgba(31,30,33,0.55)'
-                      : 'rgba(255,255,255,0.55)',
-                }}
-              >
-                Most marketing reacts. SuperSymm anticipates. Before a prospect like Sarah ever
-                encounters your brand, the content map already knows what she'll need, when she'll
-                need it, and what should come next.
-              </motion.p>
-            </motion.div>
+              What it looks like in practice
+            </motion.p>
 
-            {/* Toggle */}
-            <div className="flex flex-wrap gap-3 justify-center mb-12">
+            {/* Toggle — under eyebrow */}
+            <div className="flex flex-wrap gap-3 justify-center mb-10">
               <button
                 onClick={() => setContentMapView('backend')}
                 className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-colors ${
                   contentMapView === 'backend'
                     ? 'bg-ss-purple-500 text-white'
-                    : 'bg-white/10 text-white hover:bg-white/20'
+                    : contentMapView === 'example'
+                      ? 'bg-white/10 text-white hover:bg-white/20'
+                      : 'bg-ss-purple-700/10 text-ss-neutral-700 hover:bg-ss-purple-700/20'
                 }`}
               >
                 ⚙️ Content Map (Backend)
@@ -1546,7 +1497,74 @@ export default function CommandCenterPage() {
               </button>
             </div>
 
-            {/* Animated swap */}
+            {/* Title + body — swap per tab */}
+            <div className="text-center mx-auto mb-12" style={{ maxWidth: '820px' }}>
+              <AnimatePresence mode="wait">
+                {contentMapView === 'backend' ? (
+                  <motion.div
+                    key="backend-header"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.25, ease: 'easeOut' }}
+                  >
+                    <h2
+                      className="font-display font-black leading-[1.1] mb-5"
+                      style={{ fontSize: 'clamp(32px, 4vw, 52px)', color: '#1F1E21' }}
+                    >
+                      Behind every great lead experience is a content map that{' '}
+                      <em className="font-serif" style={gradientTextOnLavender}>
+                        thinks ahead.
+                      </em>
+                    </h2>
+                    <p
+                      className="font-sans text-[18px] leading-[1.6] mb-4"
+                      style={{ color: 'rgba(31,30,33,0.70)' }}
+                    >
+                      This is the choreography that turns a stranger into a qualified conversation.
+                      Every piece of content mapped, sequenced, and pre-built before the lead even
+                      arrives.
+                    </p>
+                    <p
+                      className="font-sans text-[16px] leading-[1.6]"
+                      style={{ color: 'rgba(31,30,33,0.55)' }}
+                    >
+                      Most marketing reacts. SuperSymm anticipates. Before a prospect like Sarah ever
+                      encounters your brand, the content map already knows what she'll need, when
+                      she'll need it, and what should come next.
+                    </p>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="example-header"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.25, ease: 'easeOut' }}
+                  >
+                    <h2
+                      className="font-display font-black leading-[1.1] mb-5"
+                      style={{ fontSize: 'clamp(32px, 4vw, 52px)', color: '#FFFFFF' }}
+                    >
+                      From cold visitor to{' '}
+                      <em className="font-serif" style={gradientTextDark}>
+                        qualified lead.
+                      </em>
+                    </h2>
+                    <p
+                      className="font-sans text-[18px] leading-[1.6]"
+                      style={{ color: 'rgba(255,255,255,0.75)' }}
+                    >
+                      Most marketing platforms automate tasks. SuperSymm orchestrates relationships.
+                      Here's what one prospect's journey looks like from first touch to qualified
+                      handoff.
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Animated swap — visualization */}
             <AnimatePresence mode="wait">
               {contentMapView === 'backend' ? (
                 <motion.div
@@ -1556,12 +1574,6 @@ export default function CommandCenterPage() {
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
                 >
-                  <p
-                    className="text-lg font-semibold text-center mb-8"
-                    style={{ color: 'rgba(31,30,33,0.75)' }}
-                  >
-                    Every asset, trigger, and rule — pre-built before a lead arrives.
-                  </p>
                   <MarketingFunnel />
                 </motion.div>
               ) : (
@@ -1572,7 +1584,7 @@ export default function CommandCenterPage() {
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
                 >
-                  <LeadJourney hideCta transparent />
+                  <LeadJourney hideCta transparent hideHeader />
                 </motion.div>
               )}
             </AnimatePresence>
